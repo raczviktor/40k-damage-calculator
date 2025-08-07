@@ -11,27 +11,41 @@
   <div class="flex">
     <div>
       <h3>🔫 Támadó fegyver</h3>
-      <label>Attack (támadások száma): <input id="attacks" type="number" value="10"></label>
-      <label>BS (pl. 3): <input id="bs" type="number" value="3"></label>
-      <label>Erő (S): <input id="strength" type="number" value="4"></label>
-      <label>AP: <input id="ap" type="number" value="-1"></label>
-      <label>Sebzés: <input id="damage" type="number" value="1"></label>
-      <label>Re-roll hit:
-        <select id="rerollHit">
-          <option value="none">Nincs</option>
-          <option value="1s">1-eseket</option>
-          <option value="all">Mindent</option>
-        </select>
-      </label>
-      <label>Re-roll wound:
-        <select id="rerollWound">
-          <option value="none">Nincs</option>
-          <option value="1s">1-eseket</option>
-          <option value="all">Mindent</option>
-        </select>
-      </label>
-      <label><input type="checkbox" id="lethal"> Lethal Hits (6 to hit auto wound)</label>
-      <label><input type="checkbox" id="sustained"> Sustained Hits (6 to hit +1 hit)</label>
+
+      <div id="weapons-container">
+        <div class="weapon">
+          <label>Attack (támadások száma): <input class="attacks" type="number" value="10"></label>
+          <label>BS: <input class="bs" type="number" value="3"></label>
+          <label>Erő (S): <input class="strength" type="number" value="4"></label>
+          <label>AP: <input class="ap" type="number" value="-1"></label>
+          <label>Sebzés: <input class="damage" type="number" value="1"></label>
+          <label><input class="lethal" type="checkbox"> Lethal Hits</label>
+          <label><input class="sustained" type="checkbox"> Sustained Hits</label>
+          <!-- Nincs törlés gomb az első fegyvernél -->
+        </div>
+      </div>
+      
+      <button id="add-weapon">Fegyver hozzáadása</button>
+      
+      <div id="weapon-template" style="display:none;">
+        <div class="weapon">
+          <label>Attack (támadások száma): <input class="attacks" type="number" value="10"></label>
+          <label>BS: <input class="bs" type="number" value="3"></label>
+          <label>Erő (S): <input class="strength" type="number" value="4"></label>
+          <label>AP: <input class="ap" type="number" value="-1"></label>
+          <label>Sebzés: <input class="damage" type="number" value="1"></label>
+          <label><input class="lethal" type="checkbox"> Lethal Hits</label>
+          <label><input class="sustained" type="checkbox"> Sustained Hits</label>
+          <button class="remove-weapon">Eltávolítás</button>
+        </div>
+      </div>
+      
+      
+
+
+
+
+      
     </div>
 
     <div>

@@ -3,26 +3,49 @@ import Defender from './model/Defender.js';
 import Weapon from './model/Weapon.js';
 import DamageCalculator from './DamageCalculator.js';
 
+const weaponsContainer = document.getElementById('weapons-container');
+const addWeaponBtn = document.getElementById('add-weapon');
+const weaponTemplate = document.getElementById('weapon-template').firstElementChild;
+
+function collectWeapons() {
+  const weapons = [];
+  const weaponDivs = weaponsContainer.querySelectorAll('.weapon');
+  weaponDivs.forEach(div => {
+    weapons.push(new Weapon({
+      attacks: +div.querySelector('.attacks').value,
+      bs: +div.querySelector('.bs').value,
+      strength: +div.querySelector('.strength').value,
+      ap: +div.querySelector('.ap').value,
+      damage: +div.querySelector('.damage').value,
+      lethal: div.querySelector('.lethal').checked,
+      sustained: div.querySelector('.sustained').checked,
+      // Feltételezem, hogy reroll mezők már nem egyenként, hanem globalban lesznek (ha nem, hozzá kell adni)
+      rerollHit: document.getElementById('rerollHit').value,
+      rerollWound: document.getElementById('rerollWound').value
+    }));
+  });
+  return weapons;
+}
+
+// Fegyver hozzáadás eseménykezelője
+addWeaponBtn.addEventListener('click', () => {
+  const newWeapon = weaponTemplate.cloneNode(true);
+  // Csatoljuk az eltávolító gomb eseményét
+  const removeBtn = newWeapon.querySelector('.remove-weapon');
+  removeBtn.addEventListener('click', () => {
+    newWeapon.remove();
+  });
+  weaponsContainer.appendChild(newWeapon);
+});
+
+// Számítás eseménykezelője
 document.getElementById('calc').addEventListener('click', () => {
-  // Fegyver példány létrehozása a mezők alapján
-  const weapon = new Weapon({
-    attacks: +document.getElementById('attacks').value,  // shots helyett attacks
-    bs: +document.getElementById('bs').value,
-    strength: +document.getElementById('strength').value,
-    ap: +document.getElementById('ap').value,
-    damage: +document.getElementById('damage').value,
-    lethal: document.getElementById('lethal').checked,
-    sustained: document.getElementById('sustained').checked,
-    rerollHit: document.getElementById('rerollHit').value,
-    rerollWound: document.getElementById('rerollWound').value
-  });
+  const weapons = collectWeapons();
 
-  // Attacker létrehozása egy vagy több fegyverrel (itt csak egy)
   const attacker = new Attacker({
-    weapons: [weapon]
+    weapons: weapons
   });
 
-  // Defender létrehozása
   const defender = new Defender({
     toughness: +document.getElementById('toughness').value,
     save: +document.getElementById('save').value,
