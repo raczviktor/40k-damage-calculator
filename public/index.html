@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>WH40K Sebzéskalkulátor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>WH40K Sebzéskalkulátor</h1>
+
+  <div class="flex">
+    <div>
+      <h3>🔫 Támadó fegyver</h3>
+      <label>Attack (támadások száma): <input id="attacks" type="number" value="10"></label>
+      <label>BS (pl. 3): <input id="bs" type="number" value="3"></label>
+      <label>Erő (S): <input id="strength" type="number" value="4"></label>
+      <label>AP: <input id="ap" type="number" value="-1"></label>
+      <label>Sebzés: <input id="damage" type="number" value="1"></label>
+      <label>Re-roll hit:
+        <select id="rerollHit">
+          <option value="none">Nincs</option>
+          <option value="1s">1-eseket</option>
+          <option value="all">Mindent</option>
+        </select>
+      </label>
+      <label>Re-roll wound:
+        <select id="rerollWound">
+          <option value="none">Nincs</option>
+          <option value="1s">1-eseket</option>
+          <option value="all">Mindent</option>
+        </select>
+      </label>
+      <label><input type="checkbox" id="lethal"> Lethal Hits (6 to hit auto wound)</label>
+      <label><input type="checkbox" id="sustained"> Sustained Hits (6 to hit +1 hit)</label>
+    </div>
+
+    <div>
+      <h3>🛡️ Célpont</h3>
+      <label>Toughness (T): <input id="toughness" type="number" value="4"></label>
+      <label>Save: <input id="save" type="number" value="3"></label>
+      <label>Invul Save (0 = nincs): <input id="invuln" type="number" value="0"></label>
+    </div>
+  </div>
+
+  <div>
+    <h3>🎯 Módosítók</h3>
+    <label>Re-roll hit:
+      <select id="rerollHit">
+        <option value="none">Nincs</option>
+        <option value="1s">1-eseket</option>
+        <option value="all">Mindent</option>
+      </select>
+    </label>
+    <label>Re-roll wound:
+      <select id="rerollWound">
+        <option value="none">Nincs</option>
+        <option value="1s">1-eseket</option>
+        <option value="all">Mindent</option>
+      </select>
+    </label>
+    <label><input type="checkbox" id="lethal"> Lethal Hits (6 to hit auto wound)</label>
+    <label><input type="checkbox" id="sustained"> Sustained Hits (6 to hit +1 hit)</label>
+  </div>
+
+  <button id="calc">Számítás</button>
+  <div class="result" id="result">💡 Eredmény itt jelenik meg.</div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
