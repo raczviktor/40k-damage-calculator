@@ -10,7 +10,13 @@
 
   <div class="flex">
     <div>
-      <h3>🔫 Támadó fegyver</h3>
+
+      <h3>🔫 Támadó</h3>
+
+      <label>📦 Előre definiált támadó:
+        <select id="presetAttacker">
+        </select>
+      </label>
 
       <div id="weapons-container">
         <div class="weapon">
@@ -21,7 +27,6 @@
           <label>Sebzés: <input class="damage" type="number" value="1"></label>
           <label><input class="lethal" type="checkbox"> Lethal Hits</label>
           <label><input class="sustained" type="checkbox"> Sustained Hits</label>
-          <!-- Nincs törlés gomb az első fegyvernél -->
         </div>
       </div>
       
@@ -39,17 +44,18 @@
           <button class="remove-weapon">Eltávolítás</button>
         </div>
       </div>
-      
-      
 
-
-
-
-      
     </div>
+
 
     <div>
       <h3>🛡️ Célpont</h3>
+
+      <label>📦 Előre definiált célpont:
+        <select id="presetDefender">
+        </select>
+      </label>
+
       <label>Toughness (T): <input id="toughness" type="number" value="4"></label>
       <label>Save: <input id="save" type="number" value="3"></label>
       <label>Invul Save (0 = nincs): <input id="invuln" type="number" value="0"></label>

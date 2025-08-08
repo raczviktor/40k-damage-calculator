@@ -2,6 +2,8 @@ import Attacker from './model/Attacker.js';
 import Defender from './model/Defender.js';
 import Weapon from './model/Weapon.js';
 import DamageCalculator from './DamageCalculator.js';
+import attackerPreset from './data/attackerPreset.js';
+import defenderPreset from './data/defenderPreset.js';
 
 const weaponsContainer = document.getElementById('weapons-container');
 const addWeaponBtn = document.getElementById('add-weapon');
@@ -62,4 +64,62 @@ document.getElementById('calc').addEventListener('click', () => {
     💀 <b>Sebző találatok:</b> ${result.totalWounds.toFixed(2)}<br>
     🛡️ <b>Átmentett mentések után:</b> ${result.failedSaves.toFixed(2)}
   `;
+});
+
+//preset attacker list
+const presetAttackerSelect = document.getElementById('presetAttacker');
+
+Object.keys(attackerPreset).forEach(key => {
+  const option = document.createElement('option');
+  option.value = key;
+  option.textContent = key;
+  presetAttackerSelect.appendChild(option);
+});
+
+// preset attacker
+document.getElementById('presetAttacker').addEventListener('change', (e) => {
+  const preset = attackerPreset[e.target.value];
+  if (!preset) return;
+
+  weaponsContainer.innerHTML = ''; // előző fegyverek törlése
+
+  preset.weapons.forEach((w, index) => {
+    const newWeapon = weaponTemplate.cloneNode(true);
+
+    newWeapon.querySelector('.attacks').value = w.attacks;
+    newWeapon.querySelector('.bs').value = w.bs;
+    newWeapon.querySelector('.strength').value = w.strength;
+    newWeapon.querySelector('.ap').value = w.ap;
+    newWeapon.querySelector('.damage').value = w.damage;
+    newWeapon.querySelector('.lethal').checked = w.lethal;
+    newWeapon.querySelector('.sustained').checked = w.sustained;
+
+    // Hozzáadjuk az eltávolítás gomb eseményét
+    const removeBtn = newWeapon.querySelector('.remove-weapon');
+    removeBtn.addEventListener('click', () => {
+      newWeapon.remove();
+    });
+
+    weaponsContainer.appendChild(newWeapon);
+  });
+});
+
+// preset defender list
+const presetDefenderSelect = document.getElementById('presetDefender');
+Object.keys(defenderPreset).forEach(key => {
+  const option = document.createElement('option');
+  option.value = key;
+  // Ha szebben akarod: nagybetűs első karakter vagy más név:
+  option.textContent = key.charAt(0).toUpperCase() + key.slice(1);
+  presetDefenderSelect.appendChild(option);
+});
+
+//preset defender
+document.getElementById('presetDefender').addEventListener('change', (e) => {
+  const preset = defenderPreset[e.target.value];
+  if (!preset) return;
+
+  document.getElementById('toughness').value = preset.toughness;
+  document.getElementById('save').value = preset.save;
+  document.getElementById('invuln').value = preset.invuln;
 });
