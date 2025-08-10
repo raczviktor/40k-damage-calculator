@@ -1,17 +1,33 @@
 export default class Weapon {
-    constructor({ 
-      attacks, bs, strength, ap, damage, lethal = false, sustained = false, rerollHit = 'none', rerollWound = 'none' 
-    }) {
-      this.attacks = attacks;
-      this.bs = bs;
-      this.strength = strength;
-      this.ap = ap;
-      this.damage = damage;
-      this.lethal = lethal;
-      this.sustained = sustained;
-      this.rerollHit = rerollHit;
-      this.rerollWound = rerollWound;
-    }
+  constructor({ 
+    attacks,
+    bs,
+    strength,
+    ap,
+    damage,
+    lethal = false,
+    sustained = 0,
+    devastating = false,
+    twinlinked = false,
+    rapidFireX = 0,
+    withinHalfRange = false,
+    rerollHit = 'none',
+    rerollWound = 'none'
+  }) {
+    this.attacks = +attacks;
+    this.bs = +bs;
+    this.strength = +strength;
+    this.ap = +ap;
+    this.damage = +damage;
+    this.lethal = !!lethal;
+    this.sustained = +sustained;
+    this.devastating = !!devastating;
+    this.twinlinked = !!twinlinked;
+    this.rapidFireX = +rapidFireX;
+    this.withinHalfRange = !!withinHalfRange;
+    this.rerollHit = rerollHit;
+    this.rerollWound = rerollWound;
+  }
 
   getHitChance() {
     const chance = (7 - this.bs) / 6;

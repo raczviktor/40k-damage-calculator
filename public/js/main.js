@@ -1,3 +1,4 @@
+// js/main.js
 import Attacker from './model/Attacker.js';
 import Defender from './model/Defender.js';
 import Weapon from './model/Weapon.js';
@@ -9,113 +10,120 @@ const weaponsContainer = document.getElementById('weapons-container');
 const addWeaponBtn = document.getElementById('add-weapon');
 const weaponTemplate = document.getElementById('weapon-template').firstElementChild;
 
-function collectWeapons() {
-  const weapons = [];
-  const weaponDivs = weaponsContainer.querySelectorAll('.weapon');
-  weaponDivs.forEach(div => {
-    weapons.push(new Weapon({
-      attacks: +div.querySelector('.attacks').value,
-      bs: +div.querySelector('.bs').value,
-      strength: +div.querySelector('.strength').value,
-      ap: +div.querySelector('.ap').value,
-      damage: +div.querySelector('.damage').value,
-      lethal: div.querySelector('.lethal').checked,
-      sustained: div.querySelector('.sustained').checked,
-      // Feltételezem, hogy reroll mezők már nem egyenként, hanem globalban lesznek (ha nem, hozzá kell adni)
-      rerollHit: document.getElementById('rerollHit').value,
-      rerollWound: document.getElementById('rerollWound').value
-    }));
+// Egy .weapon DOM-blokkból Weapon példány
+function weaponFromDiv(div) {
+  return new Weapon({
+    attacks: +div.querySelector('.attacks').value,
+    bs: +div.querySelector('.bs').value,
+    strength: +div.querySelector('.strength').value,
+    ap: +div.querySelector('.ap').value,
+    damage: +div.querySelector('.damage').value,
+
+    lethal: div.querySelector('.lethal')?.checked || false,
+    sustained: +div.querySelector('.sustained')?.value || 0, // <-- szám
+    devastating: div.querySelector('.devastating')?.checked || false,
+    twinlinked: div.querySelector('.twinlinked')?.checked || false,
+
+    rapidFireX: +div.querySelector('.rapidFireX')?.value || 0,
+    withinHalfRange: div.querySelector('.withinHalfRange')?.checked || false,
+
+    // Fegyverenkénti reroll selectek (ha hiányoznak a DOM-ból, 'none'-ra esik)
+    rerollHit: div.querySelector('.rerollHit')?.value || 'none',
+    rerollWound: div.querySelector('.rerollWound')?.value || 'none'
   });
-  return weapons;
 }
 
-// Fegyver hozzáadás eseménykezelője
-addWeaponBtn.addEventListener('click', () => {
-  const newWeapon = weaponTemplate.cloneNode(true);
-  // Csatoljuk az eltávolító gomb eseményét
-  const removeBtn = newWeapon.querySelector('.remove-weapon');
-  removeBtn.addEventListener('click', () => {
-    newWeapon.remove();
-  });
-  weaponsContainer.appendChild(newWeapon);
-});
+function collectWeapons() {
+  return Array.from(weaponsContainer.querySelectorAll('.weapon')).map(weaponFromDiv);
+}
 
-// Számítás eseménykezelője
+// Új fegyver felvétele a template-ből, opcionális init adatokkal (preset)
+function addWeaponFromTemplate(initial = null) {
+  const row = weaponTemplate.cloneNode(true);
+
+  // Alap értékek / preset betöltése
+  const setVal = (sel, val) => { const el = row.querySelector(sel); if (el != null) el.value = val; };
+  const setChk = (sel, val) => { const el = row.querySelector(sel); if (el != null) el.checked = !!val; };
+
+  if (initial) {
+    setVal('.attacks', initial.attacks ?? 10);
+    setVal('.bs', initial.bs ?? 3);
+    setVal('.strength', initial.strength ?? 4);
+    setVal('.ap', initial.ap ?? -1);
+    setVal('.damage', initial.damage ?? 1);
+
+    setChk('.lethal', initial.lethal);
+    setVal('.sustained', initial.sustained ?? 0); // <-- szám mező, nem checkbox
+    setChk('.devastating', initial.devastating);
+    setChk('.twinlinked', initial.twinlinked);
+
+    setVal('.rapidFireX', initial.rapidFireX ?? 0);
+    setChk('.withinHalfRange', initial.withinHalfRange);
+
+    setVal('.rerollHit', initial.rerollHit ?? 'none');
+    setVal('.rerollWound', initial.rerollWound ?? 'none');
+  }
+
+  // Eltávolítás
+  const removeBtn = row.querySelector('.remove-weapon');
+  if (removeBtn) removeBtn.addEventListener('click', () => row.remove());
+
+  weaponsContainer.appendChild(row);
+}
+
+// Hozzáadás gomb
+addWeaponBtn.addEventListener('click', () => addWeaponFromTemplate());
+
+// Számítás
 document.getElementById('calc').addEventListener('click', () => {
-  const weapons = collectWeapons();
-
-  const attacker = new Attacker({
-    weapons: weapons
-  });
-
+  const attacker = new Attacker({ weapons: collectWeapons() });
   const defender = new Defender({
     toughness: +document.getElementById('toughness').value,
     save: +document.getElementById('save').value,
     invuln: +document.getElementById('invuln').value
   });
 
-  const calculator = new DamageCalculator(attacker, defender);
-  const result = calculator.calculateTotal();
+  const calc = new DamageCalculator(attacker, defender);
+  const res = calc.calculateTotal();
 
+  // Csak a valóságos (rounded*) értékeket mutatjuk
   document.getElementById('result').innerHTML = `
-    🎯 <b>Átlagos sebzés:</b> ${result.avgDamage.toFixed(2)}<br>
-    🧱 <b>Realisztikus sebzéslépcső:</b> ${result.realisticDamage}<br>
-    🎲 <b>Találatok:</b> ${result.totalHits.toFixed(2)}<br>
-    💀 <b>Sebző találatok:</b> ${result.totalWounds.toFixed(2)}<br>
-    🛡️ <b>Átmentett mentések után:</b> ${result.failedSaves.toFixed(2)}
+    🎲 <b>Találatok:</b> ${res.roundedHits}<br>
+    💀 <b>Sebző találatok:</b> ${res.roundedWounds}<br>
+    🛡️ <b>Mentő után:</b> ${res.roundedFailedSaves}<br>
+    🎯 <b>Sebzés:</b> ${res.roundedDamage}
   `;
 });
 
-//preset attacker list
+// Preset attacker lista feltöltése
 const presetAttackerSelect = document.getElementById('presetAttacker');
-
 Object.keys(attackerPreset).forEach(key => {
-  const option = document.createElement('option');
-  option.value = key;
-  option.textContent = key;
-  presetAttackerSelect.appendChild(option);
+  const opt = document.createElement('option');
+  opt.value = key;
+  opt.textContent = key;
+  presetAttackerSelect.appendChild(opt);
 });
 
-// preset attacker
-document.getElementById('presetAttacker').addEventListener('change', (e) => {
+// Preset attacker betöltése
+presetAttackerSelect.addEventListener('change', (e) => {
   const preset = attackerPreset[e.target.value];
   if (!preset) return;
 
-  weaponsContainer.innerHTML = ''; // előző fegyverek törlése
-
-  preset.weapons.forEach((w, index) => {
-    const newWeapon = weaponTemplate.cloneNode(true);
-
-    newWeapon.querySelector('.attacks').value = w.attacks;
-    newWeapon.querySelector('.bs').value = w.bs;
-    newWeapon.querySelector('.strength').value = w.strength;
-    newWeapon.querySelector('.ap').value = w.ap;
-    newWeapon.querySelector('.damage').value = w.damage;
-    newWeapon.querySelector('.lethal').checked = w.lethal;
-    newWeapon.querySelector('.sustained').checked = w.sustained;
-
-    // Hozzáadjuk az eltávolítás gomb eseményét
-    const removeBtn = newWeapon.querySelector('.remove-weapon');
-    removeBtn.addEventListener('click', () => {
-      newWeapon.remove();
-    });
-
-    weaponsContainer.appendChild(newWeapon);
-  });
+  weaponsContainer.innerHTML = '';
+  preset.weapons.forEach(w => addWeaponFromTemplate(w));
 });
 
-// preset defender list
+// Preset defender lista feltöltése
 const presetDefenderSelect = document.getElementById('presetDefender');
 Object.keys(defenderPreset).forEach(key => {
-  const option = document.createElement('option');
-  option.value = key;
-  // Ha szebben akarod: nagybetűs első karakter vagy más név:
-  option.textContent = key.charAt(0).toUpperCase() + key.slice(1);
-  presetDefenderSelect.appendChild(option);
+  const opt = document.createElement('option');
+  opt.value = key;
+  opt.textContent = key.charAt(0).toUpperCase() + key.slice(1);
+  presetDefenderSelect.appendChild(opt);
 });
 
-//preset defender
-document.getElementById('presetDefender').addEventListener('change', (e) => {
+// Preset defender betöltése
+presetDefenderSelect.addEventListener('change', (e) => {
   const preset = defenderPreset[e.target.value];
   if (!preset) return;
 

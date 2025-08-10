@@ -14,7 +14,7 @@ const attackerPreset = {
         rerollHit: "none",
         rerollWound: "none",
         lethal: false,
-        sustained: false,
+        sustained: 0
       })
     ]
   }),
@@ -31,7 +31,7 @@ const attackerPreset = {
         rerollHit: "none",
         rerollWound: "none",
         lethal: false,
-        sustained: false,
+        sustained: 0
       })
     ]
   }),
@@ -48,7 +48,7 @@ const attackerPreset = {
         rerollHit: "1s",
         rerollWound: "none",
         lethal: false,
-        sustained: false,
+        sustained: 0
       }),
       new Weapon({
         name: "Bolt Pistol",
@@ -60,7 +60,7 @@ const attackerPreset = {
         rerollHit: "none",
         rerollWound: "none",
         lethal: false,
-        sustained: false,
+        sustained: 0
       })
     ]
   }),
