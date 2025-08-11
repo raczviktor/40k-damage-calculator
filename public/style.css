@@ -164,3 +164,47 @@ label:not(:has(input[type="checkbox"])) {
     height: 28px;
   }
 }
+
+/* Piros notification */
+.notice {
+  background: #fee2e2; /* red-100 */
+  border: 1px solid #fecaca; /* red-200 */
+  color: #7f1d1d; /* red-900 */
+  padding: 12px 14px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+.notice > summary {
+  list-style: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+.notice > summary::-webkit-details-marker { display: none; }
+.notice .small {
+  font-weight: 500;
+  display: block;
+  margin-top: 6px;
+}
+
+/* Kétfüles választó (CSS-only rádiós tabok) */
+.tabs {
+  margin: 12px 0 8px;
+}
+.tabs > input[type="radio"] { display: none; }
+.tab-labels {
+  display: flex; gap: 6px; margin-bottom: 12px;
+}
+.tab-label {
+  padding: 10px 14px; border-radius: 8px; border: 1px solid #ddd;
+  background: #f8fafc; cursor: pointer; user-select: none; font-weight: 700;
+}
+#mode-manual:checked ~ .tab-labels label[for="mode-manual"],
+#mode-preset:checked ~ .tab-labels label[for="mode-preset"] {
+  background: #e0e7ff; border-color: #c7d2fe;
+}
+.tab-content { display: none; }
+#mode-manual:checked ~ #tab-manual,
+#mode-preset:checked ~ #tab-preset { display: block; }
+.muted { color: #555; font-size: 0.95rem; }
+details.disclosure { margin-top: 10px; }
+details.disclosure > summary { cursor: pointer; font-weight: 700; }

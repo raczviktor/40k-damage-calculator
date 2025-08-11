@@ -7,139 +7,229 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <details class="notice" open>
+    <summary>ℹ️ Fontos tudnivalók (kattints bezáráshoz/nyitáshoz)</summary>
+    <span class="small">
+      • A védő mentődobásai <b>fedezékben értendők</b>.<br/>
+      • Néhány fegyverképesség <b>átlagolva</b> kerül számításra. Példa: a <b>Heavy</b> két körből számol (mozgás után + mozdulatlanul), ezek átlaga jelenik meg.
+    </span>
+  </details>
+
   <h1>WH40K Sebzéskalkulátor</h1>
 
-  <div class="flex">
-    <div>
-      <h3>🔫 Támadó</h3>
-
-      <label>📦 Előre definiált támadó:
-        <select id="presetAttacker"></select>
-      </label>
-
-      <div id="weapons-container">
-        <!-- KEZDŐ FEgyver-sor -->
-        <div class="weapon">
-          <label>Attack (támadások száma):
-            <input class="attacks" type="number" value="10" />
-          </label>
-          <label>BS:
-            <input class="bs" type="number" value="3" />
-          </label>
-          <label>Erő (S):
-            <input class="strength" type="number" value="4" />
-          </label>
-          <label>AP:
-            <input class="ap" type="number" value="-1" />
-          </label>
-          <label>Sebzés:
-            <input class="damage" type="number" value="1" />
-          </label>
-
-          <!-- Per-fegyver módosítók -->
-          <label><input class="lethal" type="checkbox" /> Lethal Hits</label>
-          <label>Sustained Hits [X]:
-            <input class="sustained" type="number" value="0" />
-          </label>
-          <label><input class="devastating" type="checkbox" /> Devastating Wounds</label>
-          <label><input class="twinlinked" type="checkbox" /> Twin-linked (wound újradobása)</label>
-
-          <label>Rapid Fire [X]:
-            <input class="rapidFireX" type="number" value="0" />
-          </label>
-          <label><input class="withinHalfRange" type="checkbox" /> Fél táv (Rapid Fire érvényes)</label>
-
-          <label>Re-roll hit:
-            <select class="rerollHit">
-              <option value="none">Nincs</option>
-              <option value="1s">1-eseket</option>
-              <option value="all">Mindent</option>
-            </select>
-          </label>
-
-          <label>Re-roll wound:
-            <select class="rerollWound">
-              <option value="none">Nincs</option>
-              <option value="1s">1-eseket</option>
-              <option value="all">Mindent</option>
-            </select>
-          </label>
-
-          <button class="remove-weapon">Eltávolítás</button>
-        </div>
-      </div>
-
-      <button id="add-weapon">Fegyver hozzáadása</button>
-
-      <!-- TEMPLATE új fegyverhez (klónozza a main.js) -->
-      <div id="weapon-template" style="display:none;">
-        <div class="weapon">
-          <label>Attack (támadások száma):
-            <input class="attacks" type="number" value="10" />
-          </label>
-          <label>BS:
-            <input class="bs" type="number" value="3" />
-          </label>
-          <label>Erő (S):
-            <input class="strength" type="number" value="4" />
-          </label>
-          <label>AP:
-            <input class="ap" type="number" value="-1" />
-          </label>
-          <label>Sebzés:
-            <input class="damage" type="number" value="1" />
-          </label>
-
-          <!-- Per-fegyver módosítók -->
-          <label><input class="lethal" type="checkbox" /> Lethal Hits</label>
-          <label>Sustained Hits [X]:
-            <input class="sustained" type="number" value="0" />
-          </label>
-          <label><input class="devastating" type="checkbox" /> Devastating Wounds</label>
-          <label><input class="twinlinked" type="checkbox" /> Twin-linked (wound újradobása)</label>
-
-          <label>Rapid Fire [X]:
-            <input class="rapidFireX" type="number" value="0" />
-          </label>
-          <label><input class="withinHalfRange" type="checkbox" /> Fél táv (Rapid Fire érvényes)</label>
-
-          <label>Re-roll hit:
-            <select class="rerollHit">
-              <option value="none">Nincs</option>
-              <option value="1s">1-eseket</option>
-              <option value="all">Mindent</option>
-            </select>
-          </label>
-
-          <label>Re-roll wound:
-            <select class="rerollWound">
-              <option value="none">Nincs</option>
-              <option value="1s">1-eseket</option>
-              <option value="all">Mindent</option>
-            </select>
-          </label>
-
-          <button class="remove-weapon">Eltávolítás</button>
-        </div>
-      </div>
+  <div class="tabs">
+    <input type="radio" id="mode-preset" name="mode" checked />
+    <input type="radio" id="mode-manual" name="mode" />
+    <div class="tab-labels">
+      <label class="tab-label" for="mode-preset">Előre megadott</label>
+      <label class="tab-label" for="mode-manual">Manuális</label>
     </div>
 
-    <div>
-      <h3>🛡️ Célpont</h3>
+    <!-- ELŐRE MEGADOTT -->
+    <div id="tab-preset" class="tab-content">
+      <div class="flex">
+        <div>
+          <h3>🔫 Támadó (előre megadott)</h3>
+          <label>📦 Előre definiált támadó:
+            <select id="presetAttacker"></select>
+          </label>
+        </div>
 
-      <label>📦 Előre definiált célpont:
-        <select id="presetDefender"></select>
-      </label>
+        <div>
+          <h3>🛡️ Célpont (előre megadott)</h3>
+          <label>📦 Előre definiált célpont:
+            <select id="presetDefender"></select>
+          </label>
+        </div>
+      </div>
 
-      <label>Toughness (T):
-        <input id="toughness" type="number" value="4" />
-      </label>
-      <label>Save:
-        <input id="save" type="number" value="3" />
-      </label>
-      <label>Invul Save (0 = nincs):
-        <input id="invuln" type="number" value="0" />
-      </label>
+      <details class="disclosure">
+        <summary>Részletek</summary>
+        <p class="muted">A kiválasztott egység fegyverei és beállításai a Manuális fülön szerkeszthetők. A listát a kiválasztás után a rendszer tölti fel.</p>
+      </details>
+    </div>
+
+    <!-- MANUÁLIS -->
+    <div id="tab-manual" class="tab-content">
+      <div class="flex">
+        <div>
+          <h3>🔫 Támadó</h3>
+
+          <label>Fázis:
+            <select id="phase">
+              <option value="ranged">Ranged (lövő)</option>
+              <option value="melee">Melee (közelharc)</option>
+            </select>
+          </label>
+
+          <div id="weapons-container">
+            <!-- KEZDŐ WeaponMount sor -->
+            <div class="weapon">
+              <label>Darab (count):
+                <input class="count" type="number" value="1" min="1" />
+              </label>
+
+              <label>Attack (támadások száma):
+                <input class="attacks" type="number" value="10" />
+              </label>
+              <label>BS:
+                <input class="bs" type="number" value="3" />
+              </label>
+              <label>Erő (S):
+                <input class="strength" type="number" value="4" />
+              </label>
+              <label>AP:
+                <input class="ap" type="number" value="-1" />
+              </label>
+              <label>Sebzés:
+                <input class="damage" type="number" value="1" />
+              </label>
+
+              <label><input class="lethal" type="checkbox" /> Lethal Hits</label>
+              <label>Sustained Hits [X]:
+                <input class="sustained" type="number" value="0" />
+              </label>
+              <label><input class="devastating" type="checkbox" /> Devastating Wounds</label>
+              <label><input class="twinlinked" type="checkbox" /> Twin-linked</label>
+
+              <label>Rapid Fire [X]:
+                <input class="rapidFireX" type="number" value="0" />
+              </label>
+              <label><input class="withinHalfRange" type="checkbox" /> Fél táv (Rapid Fire)</label>
+
+              <label>Re-roll hit:
+                <select class="rerollHit">
+                  <option value="none">Nincs</option>
+                  <option value="1s">1-eseket</option>
+                  <option value="all">Mindent</option>
+                </select>
+              </label>
+
+              <label>Re-roll wound:
+                <select class="rerollWound">
+                  <option value="none">Nincs</option>
+                  <option value="1s">1-eseket</option>
+                  <option value="all">Mindent</option>
+                </select>
+              </label>
+
+              <label><input class="ignoreCover" type="checkbox" /> Ignore Cover</label>
+              <label><input class="torrent" type="checkbox" /> Torrent</label>
+              <label><input class="lance" type="checkbox" /> Lance</label>
+              <label><input class="blast" type="checkbox" /> Blast</label>
+              <label>Melta [X]:
+                <input class="meltaX" type="number" value="0" />
+              </label>
+              <label><input class="heavy" type="checkbox" /> Heavy</label>
+              <label>Anti – Célpont:
+                <select class="antiKeyword">
+                  <option value="">Nincs</option>
+                  <option value="VEHICLE">Vehicle</option>
+                  <option value="MONSTER">Monster</option>
+                  <option value="INFANTRY">Infantry</option>
+                  <option value="PSYKER">Psyker</option>
+                </select>
+              </label>
+              <label>Anti – [X]+:
+                <input class="antiX" type="number" value="0" min="0" />
+              </label>
+
+              <button class="remove-weapon">Eltávolítás</button>
+            </div>
+          </div>
+
+          <button id="add-weapon">Fegyver hozzáadása</button>
+
+          <!-- TEMPLATE (klónozza a main.js) -->
+          <div id="weapon-template" style="display:none;">
+            <div class="weapon">
+              <label>Darab (count):
+                <input class="count" type="number" value="1" min="1" />
+              </label>
+
+              <label>Attack (támadások száma):
+                <input class="attacks" type="number" value="10" />
+              </label>
+              <label>BS:
+                <input class="bs" type="number" value="3" />
+              </label>
+              <label>Erő (S):
+                <input class="strength" type="number" value="4" />
+              </label>
+              <label>AP:
+                <input class="ap" type="number" value="-1" />
+              </label>
+              <label>Sebzés:
+                <input class="damage" type="number" value="1" />
+              </label>
+
+              <label><input class="lethal" type="checkbox" /> Lethal Hits</label>
+              <label>Sustained Hits [X]:
+                <input class="sustained" type="number" value="0" />
+              </label>
+              <label><input class="devastating" type="checkbox" /> Devastating Wounds</label>
+              <label><input class="twinlinked" type="checkbox" /> Twin-linked</label>
+
+              <label>Rapid Fire [X]:
+                <input class="rapidFireX" type="number" value="0" />
+              </label>
+              <label><input class="withinHalfRange" type="checkbox" /> Fél táv (Rapid Fire)</label>
+
+              <label>Re-roll hit:
+                <select class="rerollHit">
+                  <option value="none">Nincs</option>
+                  <option value="1s">1-eseket</option>
+                  <option value="all">Mindent</option>
+                </select>
+              </label>
+
+              <label>Re-roll wound:
+                <select class="rerollWound">
+                  <option value="none">Nincs</option>
+                  <option value="1s">1-eseket</option>
+                  <option value="all">Mindent</option>
+                </select>
+              </label>
+
+              <label><input class="ignoreCover" type="checkbox" /> Ignore Cover</label>
+              <label><input class="torrent" type="checkbox" /> Torrent</label>
+              <label><input class="lance" type="checkbox" /> Lance</label>
+              <label><input class="blast" type="checkbox" /> Blast</label>
+              <label>Melta [X]:
+                <input class="meltaX" type="number" value="0" />
+              </label>
+              <label><input class="heavy" type="checkbox" /> Heavy</label>
+              <label>Anti – Célpont:
+                <select class="antiKeyword">
+                  <option value="">Nincs</option>
+                  <option value="VEHICLE">Vehicle</option>
+                  <option value="MONSTER">Monster</option>
+                  <option value="INFANTRY">Infantry</option>
+                  <option value="PSYKER">Psyker</option>
+                </select>
+              </label>
+              <label>Anti – [X]+:
+                <input class="antiX" type="number" value="0" min="0" />
+              </label>
+
+              <button class="remove-weapon">Eltávolítás</button>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3>🛡️ Célpont</h3>
+          <label>Toughness (T):
+            <input id="toughness" type="number" value="4" />
+          </label>
+          <label>Save:
+            <input id="save" type="number" value="3" />
+          </label>
+          <label>Invul Save (0 = nincs):
+            <input id="invuln" type="number" value="0" />
+          </label>
+        </div>
+      </div>
     </div>
   </div>
 
