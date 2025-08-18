@@ -3,6 +3,7 @@ import Weapon from '../../../model/Weapon.js';
 import WeaponMount from '../../../model/WeaponMount.js';
 
 const bloodAngelBattleline = {
+  /*
   "Heavy Intercessor Squad": new Attacker({
     name: "Heavy Intercessor Squad",
     modelCount: 10,
@@ -32,6 +33,7 @@ const bloodAngelBattleline = {
       })
     ]
   })
+  */
 };
 
 export default bloodAngelBattleline;

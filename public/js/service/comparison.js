@@ -1,22 +1,24 @@
-// services/comparison.js – összehasonlító futtatás 5 defender ellen (pure + calcTotals)
+// service/comparison.js
 import { calcTotals } from './damage.js';
 
 export function run({ Attacker, Defender }, mounts, phase, defenderEntries) {
   const attacker = new Attacker({
-    name: 'Preset/Manual',
+    name: 'Preset',
     rangedMounts: phase === 'ranged' ? mounts : [],
     meleeMounts:  phase === 'melee'  ? mounts : []
   });
-  const weaponsForPhase = attacker.getWeapons(phase);
+  const weapons = attacker.getWeapons(phase);
 
-  return defenderEntries.map(([key, d]) => {
-    const res = calcTotals(weaponsForPhase, new Defender(d));
+  return defenderEntries.map(([key, defData]) => {
+    // FONTOS: defData-ben benne van a woundsPerModel is a defenderPresetből
+    const defender = new Defender(defData);
+    const res = calcTotals(weapons, defender);
     return {
       key,
-      hits:   res.roundedHits ?? 0,
-      wounds: res.roundedWounds ?? 0,
-      failed: res.roundedFailedSaves ?? 0,
-      damage: res.roundedDamage ?? 0,
+      hits:   res.roundedHits,
+      wounds: res.roundedWounds,
+      failed: res.roundedFailedSaves,
+      damage: res.roundedDamage
     };
   });
 }

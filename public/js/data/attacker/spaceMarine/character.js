@@ -3,6 +3,7 @@ import Weapon from '../../../model/Weapon.js';
 import WeaponMount from '../../../model/WeaponMount.js';
 
 const bloodAngelCharacter = {
+  /*
   "Blood Angels Captain": new Attacker({
     name: "Blood Angels Captain",
     modelCount: 1,
@@ -25,6 +26,7 @@ const bloodAngelCharacter = {
       })
     ]
   })
+    */
 };
 
 export default bloodAngelCharacter;

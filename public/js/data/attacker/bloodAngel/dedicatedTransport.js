@@ -3,6 +3,7 @@ import Weapon from '../../../model/Weapon.js';
 import WeaponMount from '../../../model/WeaponMount.js';
 
 const bloodAngelDedicatedTransport = {
+  /*
   "Impulsor": new Attacker({
     name: "Impulsor",
     modelCount: 1,
@@ -17,6 +18,7 @@ const bloodAngelDedicatedTransport = {
     ],
     meleeMounts: []
   })
+    */
 };
 
 export default bloodAngelDedicatedTransport;
