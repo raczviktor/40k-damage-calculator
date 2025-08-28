@@ -408,6 +408,426 @@ const bloodAngelOther = {
       })
     ],
   }),
+  "Aggressor Squad (3, ranged)": new Attacker({
+    name: "Aggressor Squad (3, ranged)",
+    modelCount: 3,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Auto boltstorm gauntlets",
+          attacks: 3, bs: 3, strength: 4, ap: -1, damage: 1, twinlinked: true
+        })
+      }),
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Fragstorm grenade launcher",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1
+        })
+      })
+    ]
+  }),
+  "Aggressor Squad (6, ranged)": new Attacker({
+    name: "Agressor Squad (6, ranged)",
+    modelCount: 6,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Auto boltstorm gauntlets",
+          attacks: 3, bs: 3, strength: 4, ap: -1, damage: 1, twinlinked: true
+        })
+      }),
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Fragstorm grenade launcher",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1
+        })
+      })
+    ]
+  }),
+  "Aggressor Squad + Biologis (6+1, ranged)": new Attacker({
+    name: "Aggressor Squad + Biologis (6+1, ranged)",
+    modelCount: 7,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Auto boltstorm gauntlets",
+          attacks: 3, bs: 3, strength: 4, ap: -1, damage: 1, twinlinked: true, lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Fragstorm grenade launcher",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1, lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Absolvor bolt pistol",
+          attacks: 1, bs: 3, strength: 5, ap: -2, damage: 2, lethal: true
+        })
+      }),
+    ]
+  }),
+  "Aggressor Squad + Biologis (3+1, ranged)": new Attacker({
+    name: "Aggressor Squad + Biologis (3+1, ranged)",
+    modelCount: 4,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Auto boltstorm gauntlets",
+          attacks: 3, bs: 3, strength: 4, ap: -1, damage: 1, twinlinked: true, lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Fragstorm grenade launcher",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1, lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Absolvor bolt pistol",
+          attacks: 1, bs: 3, strength: 5, ap: -2, damage: 2, lethal: true
+        })
+      }),
+    ]
+  }),
+
+
+  "Aggressor Squad (3, melee)": new Attacker({
+    name: "Aggressor Squad (3, melee)",
+    modelCount: 3,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Twin power fists",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, twinlinked: true
+        })
+      })
+    ]
+  }),
+  "Aggressor Squad (6, melee)": new Attacker({
+    name: "Agressor Squad (6, melee)",
+    modelCount: 6,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Twin power fists",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, twinlinked: true
+        })
+      })
+    ]
+  }),
+  "Aggressor Squad + Biologis (6+1, melee)": new Attacker({
+    name: "Aggressor Squad + Biologis (6+1, melee)",
+    modelCount: 7,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Twin power fists",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, twinlinked: true, lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Absolvor bolt pistol",
+          attacks: 4, bs: 3, strength: 4, ap: 0, damage: 1, lethal: true
+        })
+      }),
+    ]
+  }),
+  "Aggressor Squad + Biologis (3+1, melee)": new Attacker({
+    name: "Aggressor Squad + Biologis (3+1, melee)",
+    modelCount: 4,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Twin power fists",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, twinlinked: true, lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Absolvor bolt pistol",
+          attacks: 4, bs: 3, strength: 4, ap: 0, damage: 1, lethal: true
+        })
+      }),
+    ]
+  }),
+
+  "Guilliman (melee, Emperor’s Sword)": new Attacker({
+    name: "Guilliman (melee, Emperor’s Sword)",
+    modelCount: 1,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Emperor’s Sword",
+          attacks: 14, bs: 2, strength: 8, ap: -3, damage: 2, devastating: true
+        })
+      })
+    ]
+  }),
+
+  "Guilliman (melee, Hand of Dominion)": new Attacker({
+    name: "Guilliman (melee, Hand of Dominion)",
+    modelCount: 1,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Hand of Dominion",
+          attacks: 7, bs: 2, strength: 14, ap: -4, damage: 4, lethal: true
+        })
+      })
+    ]
+  }),
+
+
+  "Guilliman (range)": new Attacker({
+    name: "Guilliman (range)",
+    modelCount: 1,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Hand of Dominion",
+          attacks: 2, bs: 2, strength: 6, ap: -2, damage: 2, rapidFireX: 2
+        })
+      })
+    ]
+  }),
+
+  "Assault Intercessor Squad with jump pack (5, melee)": new Attacker({
+    name: "Assault Intercessor Squad with jump pack (5, melee)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2,
+        })
+      }),
+      new WeaponMount({
+        count: 4,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1,
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with jump pack (10, melee)": new Attacker({
+    name: "Assault Intercessor Squad with jump pack (10, melee)",
+    modelCount: 10,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2,
+        })
+      }),
+      new WeaponMount({
+        count: 9,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1,
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with jump pack (5, melee, liberator, charge)": new Attacker({
+    name: "Assault Intercessor Squad with jump pack (5, melee, liberator, charge)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2,
+        })
+      }),
+      new WeaponMount({
+        count: 4,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1,
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with jump pack (10, melee, liberator, charge)": new Attacker({
+    name: "Assault Intercessor Squad with jump pack (10, melee, liberator, charge)",
+    modelCount: 10,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, 
+        })
+      }),
+      new WeaponMount({
+        count: 9,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1, 
+        })
+      })
+    ]
+  }),
+
+  "Bladeguard squad (3, melee, liberator)": new Attacker({
+    name: "Bladeguard squad (3, melee, liberator)",
+    modelCount: 3,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Master-crafted power weapon",
+          attacks: 5, bs: 3, strength: 7, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Bladeguard squad (6, melee, liberator)": new Attacker({
+    name: "Bladeguard squad (6, melee, liberator)",
+    modelCount: 6,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Master-crafted power weapon",
+          attacks: 5, bs: 3, strength: 7, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Terminator squad (5, melee, liberator)": new Attacker({
+    name: "Terminator squad (5, melee, liberator)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Terminator squad (5, melee)": new Attacker({
+    name: "Terminator squad (5, melee)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+
+  "Sanguinary guard (3, melee, liberator)": new Attacker({
+    name: "Sanguinary guard (3, melee, liberator)",
+    modelCount: 3,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Encarmine blade",
+          attacks: 5, bs: 3, strength: 8, ap: -3, damage: 2
+        })
+      })
+    ],
+  }),
+  "Sanguinary guard (6, melee, liberator)": new Attacker({
+    name: "Sanguinary guard (6, melee, liberator)",
+    modelCount: 6,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Encarmine blade",
+          attacks: 5, bs: 3, strength: 8, ap: -3, damage: 2
+        })
+      })
+    ],
+  }),
+  "Sanguinary guard (6, melee)": new Attacker({
+    name: "Sanguinary guard (6, melee)",
+    modelCount: 6,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Encarmine blade",
+          attacks: 4, bs: 3, strength: 6, ap: -3, damage: 2
+        })
+      })
+    ],
+  }),
+  "Terminator squad & Captain (5, melee, liberator)": new Attacker({
+    name: "Terminator squad & Captain (5, melee, liberator)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2
+        }),
+      }),
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Relic fist",
+          attacks: 6, bs: 2, strength: 10, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Terminator squad & Captain (5, melee)": new Attacker({
+    name: "Terminator squad & Captain (5, melee)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Relic fist",
+          attacks: 5, bs: 2, strength: 8, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+
 };
 
 export default bloodAngelOther;
