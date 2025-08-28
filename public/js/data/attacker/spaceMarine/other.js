@@ -799,7 +799,7 @@ const bloodAngelOther = {
         }),
       }),
       new WeaponMount({
-        count: 5,
+        count: 1,
         weapon: new Weapon({
           name: "Relic fist",
           attacks: 6, bs: 2, strength: 10, ap: -2, damage: 2
@@ -819,7 +819,7 @@ const bloodAngelOther = {
         })
       }),
       new WeaponMount({
-        count: 5,
+        count: 1,
         weapon: new Weapon({
           name: "Relic fist",
           attacks: 5, bs: 2, strength: 8, ap: -2, damage: 2
