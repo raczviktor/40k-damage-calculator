@@ -719,32 +719,6 @@ const bloodAngelOther = {
       })
     ],
   }),
-  "Terminator squad (5, melee, liberator)": new Attacker({
-    name: "Terminator squad (5, melee, liberator)",
-    modelCount: 5,
-    rangedMounts: [
-      new WeaponMount({
-        count: 5,
-        weapon: new Weapon({
-          name: "Powerfist",
-          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2
-        })
-      })
-    ],
-  }),
-  "Terminator squad (5, melee)": new Attacker({
-    name: "Terminator squad (5, melee)",
-    modelCount: 5,
-    rangedMounts: [
-      new WeaponMount({
-        count: 5,
-        weapon: new Weapon({
-          name: "Powerfist",
-          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2
-        })
-      })
-    ],
-  }),
 
   "Sanguinary guard (3, melee, liberator)": new Attacker({
     name: "Sanguinary guard (3, melee, liberator)",
@@ -915,46 +889,6 @@ const bloodAngelOther = {
         weapon: new Weapon({
           name: "Encarmine blade",
           attacks: 4, bs: 3, strength: 6, ap: -3, damage: 2
-        })
-      })
-    ],
-  }),
-  "Terminator squad & Captain (5, melee, liberator)": new Attacker({
-    name: "Terminator squad & Captain (5, melee, liberator)",
-    modelCount: 5,
-    rangedMounts: [
-      new WeaponMount({
-        count: 5,
-        weapon: new Weapon({
-          name: "Powerfist",
-          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2
-        }),
-      }),
-      new WeaponMount({
-        count: 1,
-        weapon: new Weapon({
-          name: "Relic fist",
-          attacks: 6, bs: 2, strength: 10, ap: -2, damage: 2
-        })
-      })
-    ],
-  }),
-  "Terminator squad & Captain (5, melee)": new Attacker({
-    name: "Terminator squad & Captain (5, melee)",
-    modelCount: 5,
-    rangedMounts: [
-      new WeaponMount({
-        count: 5,
-        weapon: new Weapon({
-          name: "Powerfist",
-          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2
-        })
-      }),
-      new WeaponMount({
-        count: 1,
-        weapon: new Weapon({
-          name: "Relic fist",
-          attacks: 5, bs: 2, strength: 8, ap: -2, damage: 2
         })
       })
     ],
@@ -2400,8 +2334,380 @@ const bloodAngelOther = {
       }),
     ],
   }),
-//
-
+// Terminator
+  "Terminator squad (5, melee)": new Attacker({
+    name: "Terminator squad (5, melee)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Terminator squad (10, melee)": new Attacker({
+    name: "Terminator squad (10, melee)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 10,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Terminator squad (5, melee, liberator)": new Attacker({
+    name: "Terminator squad (5, melee, liberator)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Terminator squad (10, melee, liberator)": new Attacker({
+    name: "Terminator squad (10, melee, liberator)",
+    modelCount: 10,
+    rangedMounts: [
+      new WeaponMount({
+        count: 10,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Terminator squad with ancient in terminator armour (5, melee)": new Attacker({
+    name: "Terminator squad with ancient in terminator armour (5, melee)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 2, strength: 8, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Terminator squad with ancient in terminator armour (10, melee)": new Attacker({
+    name: "Terminator squad with ancient in terminator armour (10, melee)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 10,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 2, strength: 8, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Terminator squad with ancient in terminator armour (5, melee, liberator)": new Attacker({
+    name: "Terminator squad with ancient in terminator armour (5, melee, liberator)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 5, bs: 2, strength: 10, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Terminator squad with ancient in terminator armour (10, melee, liberator)": new Attacker({
+    name: "Terminator squad with ancient in terminator armour (10, melee, liberator)",
+    modelCount: 10,
+    rangedMounts: [
+      new WeaponMount({
+        count: 10,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 5, bs: 2, strength: 10, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Terminator squad with Captain in terminator armour (5, melee)": new Attacker({
+    name: "Terminator squad with Captain in terminator armour (5, melee)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Relic fist",
+          attacks: 5, bs: 2, strength: 8, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Terminator squad with Captain in terminator armour (10, melee)": new Attacker({
+    name: "Terminator squad with Captain in terminator armour (10, melee)",
+    modelCount: 10,
+    rangedMounts: [
+      new WeaponMount({
+        count: 10,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Relic fist",
+          attacks: 5, bs: 2, strength: 8, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Terminator squad with Captain in terminator armour (5, melee, liberator)": new Attacker({
+    name: "Terminator squad with Captain in terminator armour (5, melee, liberator)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2
+        }),
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Relic fist",
+          attacks: 6, bs: 2, strength: 10, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Terminator squad with Captain in terminator armour (10, melee, liberator)": new Attacker({
+    name: "Terminator squad with Captain in terminator armour (10, melee, liberator)",
+    modelCount: 10,
+    rangedMounts: [
+      new WeaponMount({
+        count: 10,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2
+        }),
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Relic fist",
+          attacks: 6, bs: 2, strength: 10, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Terminator squad with Chaplain in terminator armour (5, melee)": new Attacker({
+    name: "Terminator squad with Chaplain in terminator armour (5, melee)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Crozius arcanum",
+          attacks: 5, bs: 2, strength: 6, ap: -1, damage: 2, plusOneToWound: true
+        })
+      })
+    ],
+  }),
+  "Terminator squad with Chaplain in terminator armour (10, melee)": new Attacker({
+    name: "Terminator squad with Chaplain in terminator armour (10, melee)",
+    modelCount: 10,
+    rangedMounts: [
+      new WeaponMount({
+        count: 10,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Crozius arcanum",
+          attacks: 5, bs: 2, strength: 6, ap: -1, damage: 2, plusOneToWound: true
+        })
+      })
+    ],
+  }),
+  "Terminator squad with Chaplain in terminator armour (5, melee, liberator)": new Attacker({
+    name: "Terminator squad with Chaplain in terminator armour (5, melee, liberator)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, plusOneToWound: true
+        }),
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Crozius arcanum",
+          attacks: 6, bs: 2, strength: 8, ap: -1, damage: 2, plusOneToWound: true
+        })
+      })
+    ],
+  }),
+  "Terminator squad with Chaplain in terminator armour (10, melee, liberator)": new Attacker({
+    name: "Terminator squad with Chaplain in terminator armour (10, melee, liberator)",
+    modelCount: 10,
+    rangedMounts: [
+      new WeaponMount({
+        count: 10,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, plusOneToWound: true
+        }),
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Crozius arcanum",
+          attacks: 6, bs: 2, strength: 8, ap: -1, damage: 2, plusOneToWound: true
+        })
+      })
+    ],
+  }),
+  "Terminator squad with Librarian in terminator armour (5, melee)": new Attacker({
+    name: "Terminator squad with Librarian in terminator armour (5, melee)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, sustained: 1
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Force weapon",
+          attacks: 4, bs: 3, strength: 6, ap: -1, damage: 2, sustained: 1
+        })
+      })
+    ],
+  }),
+  "Terminator squad with Librarian in terminator armour (10, melee)": new Attacker({
+    name: "Terminator squad with Librarian in terminator armour (10, melee)",
+    modelCount: 10,
+    rangedMounts: [
+      new WeaponMount({
+        count: 10,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, sustained: 1
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Force weapon",
+          attacks: 4, bs: 3, strength: 6, ap: -1, damage: 2, sustained: 1
+        })
+      })
+    ],
+  }),
+  "Terminator squad with Librarian in terminator armour (5, melee, liberator)": new Attacker({
+    name: "Terminator squad with Librarian in terminator armour (5, melee, liberator)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, sustained: 1
+        }),
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Force weapon",
+          attacks: 5, bs: 3, strength: 8, ap: -1, damage: 2, sustained: 1
+        })
+      })
+    ],
+  }),
+  "Terminator squad with Librarian in terminator armour (10, melee, liberator)": new Attacker({
+    name: "Terminator squad with Librarian in terminator armour (10, melee, liberator)",
+    modelCount: 10,
+    rangedMounts: [
+      new WeaponMount({
+        count: 10,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, sustained: 1
+        }),
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Force weapon",
+          attacks: 5, bs: 3, strength: 8, ap: -1, damage: 2, sustained: 1
+        })
+      })
+    ],
+  }),
+  
 
 
 
