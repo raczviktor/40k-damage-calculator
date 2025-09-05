@@ -24,6 +24,33 @@ const bloodAngelBattleline = {
       })
     ]
   }),
+  "Intercessor Squad with lieutenant (5, ranged)": new Attacker({
+    name: "Intercessor Squad with lieutenant (5, ranged)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Astartes grenade launcher – krak",
+          attacks: 1, bs: 3, strength: 9, ap: -2, damage: 2, lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Bolt rifle",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1, heavy: true, lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Master-crafted bolter",
+          attacks: 2, bs: 2, strength: 4, ap: -1, damage: 2, lethal: true
+        })
+      })
+    ]
+  }),
   "Assault Intercessor Squad (5, melee)": new Attacker({
     name: "Assault Intercessor Squad (5, melee)",
     modelCount: 5,
@@ -40,6 +67,80 @@ const bloodAngelBattleline = {
         weapon: new Weapon({
           name: "Astartes chainsword",
           attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1, rerollWound: '1s'
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad (5, melee, liberator)": new Attacker({
+    name: "Assault Intercessor Squad (5, melee, liberator)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, rerollWound: '1s'
+        })
+      }),
+      new WeaponMount({
+        count: 4,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1, rerollWound: '1s'
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with Blood angel captain (5, melee, chainsword, liberator, rfw is on)": new Attacker({
+    name: "Assault Intercessor Squad with Blood angel captain (5, melee, chainsword, liberator, rfw is on)",
+    modelCount: 6,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, rerollWound: '1s'
+        })
+      }),
+      new WeaponMount({
+        count: 4,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1, rerollWound: '1s'
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Master-crafted chainsword",
+          attacks: 11, bs: 2, strength: 6, ap: -1, damage: 2, rerollWound: '1s',  sustainedX: 3, devastating: true
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with Blood angel captain (5, melee, Power fist, liberator, rfw is on)": new Attacker({
+    name: "Assault Intercessor Squad with Blood angel captain (5, melee, Power fist, liberator, rfw is on)",
+    modelCount: 6,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, rerollWound: '1s'
+        })
+      }),
+      new WeaponMount({
+        count: 4,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1, rerollWound: '1s'
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Power fist",
+          attacks: 9, bs: 2, strength: 10, ap: -2, damage: 2, rerollWound: '1s',  sustainedX: 3, devastating: true
         })
       })
     ]
@@ -104,8 +205,56 @@ const bloodAngelBattleline = {
       })
     ]
   }),
+/*
+  "Assault Intercessor Squad with Blood angel captain (6, melee)": new Attacker({
+    name: "Assault Intercessor Squad with Blood angel captain (6, melee)",
+    modelCount: 6,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, rerollWound: '1s'
+        })
+      }),
+      new WeaponMount({
+        count: 4,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1, rerollWound: '1s'
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist bac",
+          attacks: 5, bs: 3, strength: 8, ap: -2, damage: 2, rerollWound: '1s'
+        })
+      }),
+    ]
+  }),
+  "Assault Intercessor Squad (5, melee, liberator, charge)": new Attacker({
+    name: "Assault Intercessor Squad (5, melee, liberator, charge)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, rerollWound: '1s'
+        })
+      }),
+      new WeaponMount({
+        count: 4,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1, rerollWound: '1s'
+        })
+      })
+    ]
+  }),
 
-  
+  *
 
 
   /*

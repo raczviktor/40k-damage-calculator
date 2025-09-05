@@ -1,158 +1,214 @@
-export function calcTotals(weapons, defender) {
-  const clamp01 = (x) => Math.max(0, Math.min(1, x));
-  const withReroll = (p, mode) => (
-    mode === 'all' ? clamp01(p + (1 - p) * p) :
-    mode === '1s'  ? clamp01(p + (1/6) * p)  :
-    clamp01(p) // 'none' és 'one' → alap p (a 'one'-t külön kezeljük)
+const clamp01 = (x) => Math.max(0, Math.min(1, x));
+
+const chanceWithReroll = (p, mode) =>
+  mode === 'all' ? clamp01(p + (1 - p) * p)
+  : mode === '1s' ? clamp01(p + (1/6) * p)
+  : clamp01(p);
+
+const chanceSixWithReroll = (mode) =>
+  mode === 'all' ? 11/36
+  : mode === '1s' ? 7/36
+  : 1/6;
+
+const effectiveWoundRerollMode = (perWeaponMode, twinlinked) =>
+  twinlinked ? 'all' : (perWeaponMode || 'none');
+
+const saveChance = (ap, save, invuln) => {
+  const base = Number(save || 7);
+  const inv = Number(invuln || 0);
+  const modified = Math.max(2, Math.min(7, base - Number(ap || 0)));
+  const effective = inv > 0 ? Math.min(modified, inv) : modified;
+  return clamp01((7 - effective) / 6);
+};
+
+function computeHits(weapon, opts) {
+  const { stationaryHeavy, halfRange } = opts;
+  const rapidShots = (halfRange && weapon.rapidFireX > 0) ? weapon.rapidFireX : 0;
+  const shots = (weapon.attacks || 0) + rapidShots;
+  if (shots <= 0) return { roundedHits: 0, roundedAutoWoundsFromLethal: 0, hitPoolForWounds: 0 };
+
+  const baseHitProbability = (() => {
+    if (stationaryHeavy && weapon.heavy) {
+      const original = weapon.bs;
+      const boosted = Math.max(2, (Number(original ?? 7)) - 1);
+      weapon.bs = boosted;
+      const p = clamp01(weapon.getHitChance());
+      weapon.bs = original;
+      return p;
+    }
+    return clamp01(weapon.getHitChance());
+  })();
+
+  const hitRerollMode = weapon.rerollHit || 'none';
+
+  const expectedBaseHits =
+    hitRerollMode === 'one'
+      ? baseHitProbability * shots + baseHitProbability * (1 - Math.pow(baseHitProbability, shots))
+      : chanceWithReroll(baseHitProbability, hitRerollMode) * shots;
+
+  const pSixHit = chanceSixWithReroll(hitRerollMode);
+  const roundedExtraHits = weapon.sustained > 0 ? Math.round((pSixHit * shots) * weapon.sustained) : 0;
+  const roundedBaseHits = Math.round(expectedBaseHits);
+  const roundedHits = roundedBaseHits + roundedExtraHits;
+
+  let roundedAutoWoundsFromLethal = weapon.lethal ? Math.round(pSixHit * shots) : 0;
+  roundedAutoWoundsFromLethal = Math.min(roundedAutoWoundsFromLethal, roundedHits);
+
+  const hitPoolForWounds = Math.max(0, roundedHits - roundedAutoWoundsFromLethal);
+
+  return { roundedHits, roundedAutoWoundsFromLethal, hitPoolForWounds };
+}
+
+function computeWounds(weapon, defender, hitPoolForWounds, roundedAutoWoundsFromLethal, opts) {
+  const { lanceCharge } = opts;
+
+  let baseWoundProbability = clamp01(weapon.getWoundChance(defender.toughness));
+
+  let woundPips = 0;
+  if (lanceCharge && weapon.lance) woundPips += 1;
+  if (weapon.plusOneToWound)       woundPips += 1;
+
+  const adjustedBase = Math.min(5/6, baseWoundProbability + woundPips * (1/6));
+
+  const woundRerollMode = effectiveWoundRerollMode(weapon.rerollWound || 'none', !!weapon.twinlinked);
+
+  const roundedSuccessfulFromPool =
+    woundRerollMode === 'one'
+      ? Math.round(
+          hitPoolForWounds * adjustedBase +
+          adjustedBase * (1 - Math.pow(adjustedBase, hitPoolForWounds))
+        )
+      : Math.round(hitPoolForWounds * chanceWithReroll(adjustedBase, woundRerollMode));
+
+  const effectiveProbForSix = (woundRerollMode === 'one')
+    ? adjustedBase
+    : chanceWithReroll(adjustedBase, woundRerollMode);
+
+  const pSixWound = Math.min(effectiveProbForSix, chanceSixWithReroll(woundRerollMode));
+
+  const roundedCritWounds = Math.min(
+    roundedSuccessfulFromPool,
+    Math.round(hitPoolForWounds * pSixWound)
   );
-  const pSixWithReroll = (mode) => (mode === 'all' ? 11/36 : mode === '1s' ? 7/36 : 1/6);
-  const effectiveWoundReroll = (perWeaponMode, twinlinked) => twinlinked ? 'all' : (perWeaponMode || 'none');
-  const getSaveChance = (ap, save, invuln) => {
-    const baseSave = Number(save || 7);
-    const inv = Number(invuln || 0);
-    let modSave = Math.max(2, Math.min(7, baseSave - Number(ap || 0)));
-    const eff = (inv > 0) ? Math.min(modSave, inv) : modSave;
-    return clamp01((7 - eff) / 6);
-  };
 
-  function computeScenario(opts) {
-    const { stationaryHeavy, halfRange, lanceCharge } = opts;
-    let rdHits=0, rdWounds=0, rdFailed=0, rdDamage=0;
+  const roundedNormalWounds = Math.max(0, roundedSuccessfulFromPool - roundedCritWounds);
 
-    for (const weapon of weapons) {
-      const rapidShots = (halfRange && weapon.rapidFireX > 0) ? weapon.rapidFireX : 0;
-      const shots = (weapon.attacks || 0) + rapidShots;
-      if (shots <= 0) continue;
+  const roundedTotalWounds = roundedAutoWoundsFromLethal + roundedCritWounds + roundedNormalWounds;
 
-      const baseHitP = (() => {
-        if (stationaryHeavy && weapon.heavy) {
-          const orig = weapon.bs;
-          const newBs = Math.max(2, (Number(orig ?? 7)) - 1);
-          weapon.bs = newBs;
-          const p = clamp01(weapon.getHitChance());
-          weapon.bs = orig;
-          return p;
-        }
-        return clamp01(weapon.getHitChance());
-      })();
+  return { roundedTotalWounds, roundedCritWounds, roundedNormalWounds };
+}
 
-      const hitRerollMode = weapon.rerollHit || 'none';
-      let baseHitsExp;
-      if (hitRerollMode === 'one') {
-        baseHitsExp = baseHitP * shots + baseHitP * (1 - Math.pow(baseHitP, shots));
-      } else {
-        const effHitP = withReroll(baseHitP, hitRerollMode);
-        baseHitsExp = effHitP * shots;
-      }
 
-      const p6Hit = pSixWithReroll(hitRerollMode);
-      const rdExtraHits = weapon.sustained > 0 ? Math.round((p6Hit * shots) * weapon.sustained) : 0;
-      const rdBaseHits = Math.round(baseHitsExp);
-      let rdHitsThis = rdBaseHits + rdExtraHits;
+function computeDamage(weapon, defender, roundedAutoWoundsFromLethal, roundedCritWounds, roundedNormalWounds, halfRange) {
+  const saveP = saveChance(weapon.ap || 0, defender.save, defender.invuln);
+  const baseDamage = (weapon.damage || 0) + ((halfRange && (weapon.meltaX || 0) > 0) ? weapon.meltaX : 0);
 
-      let rdAuto = weapon.lethal ? Math.round(p6Hit * shots) : 0;
-      rdAuto = Math.min(rdAuto, rdHitsThis);
+  const woundsPerModel =
+    defender?.woundsPerModel ??
+    defender?.wounds ??
+    defender?.modelWounds ??
+    undefined;
 
-      let rdPool = Math.max(0, rdHitsThis - rdAuto);
+  const perFailedSaveCap = Number.isFinite(+woundsPerModel) ? Math.max(1, +woundsPerModel) : Infinity;
+  const damagePerFailed = Math.min(baseDamage, perFailedSaveCap);
 
-      let baseWoundP = clamp01(weapon.getWoundChance(defender.toughness));
-      if (lanceCharge && weapon.lance) {
-        baseWoundP = clamp01(baseWoundP + 1/6);
-      }
-
-      const woundRerollMode = effectiveWoundReroll(weapon.rerollWound || 'none', !!weapon.twinlinked);
-
-      let effWoundP, rdSucc;
-      if (woundRerollMode === 'one') {
-        effWoundP = baseWoundP;
-        rdSucc = Math.round(rdPool * baseWoundP + baseWoundP * (1 - Math.pow(baseWoundP, rdPool)));
-      } else {
-        effWoundP = withReroll(baseWoundP, woundRerollMode);
-        rdSucc = Math.round(rdPool * effWoundP);
-      }
-
-      const p6Wound = Math.min(effWoundP, pSixWithReroll(woundRerollMode));
-      const rdCrit   = Math.min(rdSucc, Math.round(rdPool * p6Wound));
-      const rdNormal = Math.max(0, rdSucc - rdCrit);
-      const rdWoundsThis = rdAuto + rdCrit + rdNormal;
-
-      const saveP = getSaveChance(weapon.ap || 0, defender.save, defender.invuln);
-
-      const rawDamage = (weapon.damage || 0) + ((halfRange && (weapon.meltaX || 0) > 0) ? weapon.meltaX : 0);
-
-      // per failed save cap (spillover tiltás)
-      const rawWpm =
-        defender?.woundsPerModel ??
-        defender?.wounds ??
-        defender?.modelWounds ??
-        undefined;
-      const perFailCap = Number.isFinite(+rawWpm) ? Math.max(1, +rawWpm) : Infinity;
-      const perFailDamage = Math.min(rawDamage, perFailCap);
-
-      let rdFailThis = 0, rdDmgThis = 0;
-      if (weapon.devastating) {
-        const rdDmgCrit = rdCrit * perFailDamage;
-        const rdToSave  = rdAuto + rdNormal;
-        rdFailThis = Math.round(rdToSave * (1 - saveP));
-        const rdDmgNorm = rdFailThis * perFailDamage;
-        rdDmgThis = rdDmgCrit + rdDmgNorm;
-      } else {
-        rdFailThis = Math.round(rdWoundsThis * (1 - saveP));
-        rdDmgThis  = rdFailThis * perFailDamage;
-      }
-
-      rdHits   += rdHitsThis;
-      rdWounds += rdWoundsThis;
-      rdFailed += rdFailThis;
-      rdDamage += rdDmgThis;
-    }
-
-    // ÚJ: unit-pool cap – a teljes sebzés nem haladhatja meg a modell(ek) össz-W-ját
-    const unitModels =
-      defender?.models ??
-      defender?.modelCount ??
-      1;
-    const rawWpm =
-      defender?.woundsPerModel ??
-      defender?.wounds ??
-      defender?.modelWounds ??
-      undefined;
-    if (Number.isFinite(+rawWpm)) {
-      const totalCap = Math.max(1, +rawWpm) * Math.max(1, +unitModels);
-      if (rdDamage > totalCap) rdDamage = totalCap;
-    }
-
-    return { rdHits, rdWounds, rdFailed, rdDamage };
+  if (weapon.devastating) {
+    const damageFromCrits = roundedCritWounds * damagePerFailed;
+    const woundsNeedSave = roundedAutoWoundsFromLethal + roundedNormalWounds;
+    const roundedFailed = Math.round(woundsNeedSave * (1 - saveP));
+    const damageFromNormals = roundedFailed * damagePerFailed;
+    return { roundedFailedSaves: roundedFailed, roundedDamage: damageFromCrits + damageFromNormals };
+  } else {
+    const totalWounds = roundedAutoWoundsFromLethal + roundedCritWounds + roundedNormalWounds;
+    const roundedFailed = Math.round(totalWounds * (1 - saveP));
+    return { roundedFailedSaves: roundedFailed, roundedDamage: roundedFailed * damagePerFailed };
   }
+}
 
-  const hasHeavy = weapons?.some(w => !!w.heavy);
-  const hasRapid = weapons?.some(w => (w.rapidFireX || 0) > 0);
-  const hasLance = weapons?.some(w => !!w.lance);
-  const hasMelta = weapons?.some(w => (w.meltaX || 0) > 0);
+export function calcTotals(weapons, defender) {
+  const hasHeavy   = weapons?.some(w => !!w.heavy);
+  const hasRapid   = weapons?.some(w => (w.rapidFireX || 0) > 0);
+  const hasLance   = weapons?.some(w => !!w.lance);
+  const hasMelta   = weapons?.some(w => (w.meltaX || 0) > 0);
 
   const heavyOpts = hasHeavy ? [false, true] : [false];
   const rangeOpts = (hasRapid || hasMelta) ? [false, true] : [false];
   const lanceOpts = hasLance ? [false, true] : [false];
 
+  function computeScenario(scenario) {
+    const { stationaryHeavy, halfRange, lanceCharge } = scenario;
+
+    let roundedHitsTotal = 0;
+    let roundedWoundsTotal = 0;
+    let roundedFailedTotal = 0;
+    let roundedDamageTotal = 0;
+
+    for (const weapon of weapons) {
+      const { roundedHits, roundedAutoWoundsFromLethal, hitPoolForWounds } =
+        computeHits(weapon, { stationaryHeavy, halfRange });
+
+      const { roundedTotalWounds, roundedCritWounds, roundedNormalWounds } =
+        computeWounds(weapon, defender, hitPoolForWounds, roundedAutoWoundsFromLethal, { lanceCharge });
+
+      const { roundedFailedSaves, roundedDamage } =
+        computeDamage(weapon, defender, roundedAutoWoundsFromLethal, roundedCritWounds, roundedNormalWounds, halfRange);
+
+      roundedHitsTotal   += roundedHits;
+      roundedWoundsTotal += roundedTotalWounds;
+      roundedFailedTotal += roundedFailedSaves;
+      roundedDamageTotal += roundedDamage;
+    }
+
+    const modelCount =
+      defender?.models ??
+      defender?.modelCount ??
+      1;
+
+    const woundsPerModel =
+      defender?.woundsPerModel ??
+      defender?.wounds ??
+      defender?.modelWounds ??
+      undefined;
+
+    if (Number.isFinite(+woundsPerModel)) {
+      const unitDamageCap = Math.max(1, +woundsPerModel) * Math.max(1, +modelCount);
+      if (roundedDamageTotal > unitDamageCap) roundedDamageTotal = unitDamageCap;
+    }
+
+    return {
+      roundedHits: roundedHitsTotal,
+      roundedWounds: roundedWoundsTotal,
+      roundedFailedSaves: roundedFailedTotal,
+      roundedDamage: roundedDamageTotal
+    };
+  }
+
   const scenarios = [];
-  for (const H of heavyOpts) for (const R of rangeOpts) for (const L of lanceOpts)
-    scenarios.push({ stationaryHeavy: H, halfRange: R, lanceCharge: L });
+  for (const isStationary of heavyOpts)
+    for (const isHalfRange of rangeOpts)
+      for (const isLanceCharge of lanceOpts)
+        scenarios.push({ stationaryHeavy: isStationary, halfRange: isHalfRange, lanceCharge: isLanceCharge });
 
   if (scenarios.length === 1) {
-    const { rdHits, rdWounds, rdFailed, rdDamage } = computeScenario(scenarios[0]);
-    return { roundedHits: rdHits, roundedWounds: rdWounds, roundedFailedSaves: rdFailed, roundedDamage: rdDamage };
+    return computeScenario(scenarios[0]);
   }
 
-  let sumHits=0, sumWounds=0, sumFailed=0, sumDamage=0;
+  let sumHits = 0, sumWounds = 0, sumFailed = 0, sumDamage = 0;
   for (const sc of scenarios) {
     const r = computeScenario(sc);
-    sumHits += r.rdHits; sumWounds += r.rdWounds; sumFailed += r.rdFailed; sumDamage += r.rdDamage;
+    sumHits   += r.roundedHits;
+    sumWounds += r.roundedWounds;
+    sumFailed += r.roundedFailedSaves;
+    sumDamage += r.roundedDamage;
   }
-  const n = scenarios.length, avg = (x) => Math.round(x / n);
+
+  const scenarioCount = scenarios.length;
+  const avgRounded = (x) => Math.round(x / scenarioCount);
+
   return {
-    roundedHits: avg(sumHits),
-    roundedWounds: avg(sumWounds),
-    roundedFailedSaves: avg(sumFailed),
-    roundedDamage: avg(sumDamage)
+    roundedHits:        avgRounded(sumHits),
+    roundedWounds:      avgRounded(sumWounds),
+    roundedFailedSaves: avgRounded(sumFailed),
+    roundedDamage:      avgRounded(sumDamage)
   };
 }

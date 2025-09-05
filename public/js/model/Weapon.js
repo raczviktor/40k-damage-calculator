@@ -16,6 +16,7 @@ export default class Weapon {
     withinHalfRange = false,
     rerollHit = 'none',
     rerollWound = 'none',
+    plusOneToWound = false,
 
     ignoreCover = false,
     torrent = false,
@@ -43,6 +44,7 @@ export default class Weapon {
 
     this.rerollHit = rerollHit || 'none';
     this.rerollWound = rerollWound || 'none';
+    this.plusOneToWound = plusOneToWound || false;
 
     this.ignoreCover = !!ignoreCover;
     this.torrent = !!torrent;

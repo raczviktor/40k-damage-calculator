@@ -613,88 +613,46 @@ const bloodAngelOther = {
       })
     ]
   }),
-
-  "Assault Intercessor Squad with jump pack (5, melee)": new Attacker({
-    name: "Assault Intercessor Squad with jump pack (5, melee)",
-    modelCount: 5,
+  "Bladeguard squad with Bladeguard Ancient (3, melee, liberator, doh on)": new Attacker({
+    name: "Bladeguard squad with Bladeguard Ancient (3, melee, liberator)",
+    modelCount: 3,
     rangedMounts: [
       new WeaponMount({
-        count: 1,
+        count: 3,
         weapon: new Weapon({
-          name: "Powerfist",
-          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2,
+          name: "Master-crafted power weapon",
+          attacks: 6, bs: 3, strength: 7, ap: -2, damage: 2
         })
       }),
       new WeaponMount({
-        count: 4,
-        weapon: new Weapon({
-          name: "Astartes chainsword",
-          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1,
-        })
-      })
-    ]
-  }),
-  "Assault Intercessor Squad with jump pack (10, melee)": new Attacker({
-    name: "Assault Intercessor Squad with jump pack (10, melee)",
-    modelCount: 10,
-    rangedMounts: [
-      new WeaponMount({
         count: 1,
         weapon: new Weapon({
-          name: "Powerfist",
-          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2,
+          name: "Close combat weapon",
+          attacks: 7, bs: 2, strength: 6, ap: 0, damage: 1
+        })
+      })
+    ],
+  }),
+  "Bladeguard squad with Bladeguard Ancient (6, melee, liberator, doh on)": new Attacker({
+    name: "Bladeguard squad with Bladeguard Ancient (6, melee, liberator)",
+    modelCount: 7,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Master-crafted power weapon",
+          attacks: 6, bs: 3, strength: 7, ap: -2, damage: 2
         })
       }),
       new WeaponMount({
-        count: 9,
-        weapon: new Weapon({
-          name: "Astartes chainsword",
-          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1,
-        })
-      })
-    ]
-  }),
-  "Assault Intercessor Squad with jump pack (5, melee, liberator, charge)": new Attacker({
-    name: "Assault Intercessor Squad with jump pack (5, melee, liberator, charge)",
-    modelCount: 5,
-    rangedMounts: [
-      new WeaponMount({
         count: 1,
         weapon: new Weapon({
-          name: "Powerfist",
-          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2,
-        })
-      }),
-      new WeaponMount({
-        count: 4,
-        weapon: new Weapon({
-          name: "Astartes chainsword",
-          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1,
+          name: "Close combat weapon",
+          attacks: 7, bs: 2, strength: 6, ap: 0, damage: 1
         })
       })
-    ]
+    ],
   }),
-  "Assault Intercessor Squad with jump pack (10, melee, liberator, charge)": new Attacker({
-    name: "Assault Intercessor Squad with jump pack (10, melee, liberator, charge)",
-    modelCount: 10,
-    rangedMounts: [
-      new WeaponMount({
-        count: 1,
-        weapon: new Weapon({
-          name: "Powerfist",
-          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, 
-        })
-      }),
-      new WeaponMount({
-        count: 9,
-        weapon: new Weapon({
-          name: "Astartes chainsword",
-          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1, 
-        })
-      })
-    ]
-  }),
-
   "Bladeguard squad (3, melee, liberator)": new Attacker({
     name: "Bladeguard squad (3, melee, liberator)",
     modelCount: 3,
@@ -704,6 +662,46 @@ const bloodAngelOther = {
         weapon: new Weapon({
           name: "Master-crafted power weapon",
           attacks: 5, bs: 3, strength: 7, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Bladeguard squad with Captain (3, melee, liberator, deva on)": new Attacker({
+    name: "Bladeguard squad with Captain (3, melee, liberator, deva on)",
+    modelCount: 3,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Master-crafted power weapon",
+          attacks: 5, bs: 3, strength: 7, ap: -2, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Master-crafted power weapon",
+          attacks: 10, bs: 2, strength: 7, ap: -2, damage: 2, devastating: true
+        })
+      })
+    ],
+  }),
+  "Bladeguard squad with Captain (6, melee, liberator, deva on)": new Attacker({
+    name: "Bladeguard squad with Captain  (6, melee, liberator, deva on)",
+    modelCount: 3,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Master-crafted power weapon",
+          attacks: 5, bs: 3, strength: 7, ap: -2, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Master-crafted power weapon",
+          attacks: 10, bs: 2, strength: 7, ap: -2, damage: 2, devastating: true
         })
       })
     ],
@@ -757,6 +755,140 @@ const bloodAngelOther = {
         weapon: new Weapon({
           name: "Encarmine blade",
           attacks: 5, bs: 3, strength: 8, ap: -3, damage: 2
+        })
+      })
+    ],
+  }),
+"Sanguinary guard with captain with jump pack (3, melee, liberator)": new Attacker({
+    name: "Sanguinary guard captain with jump pack (3, melee, liberator)",
+    modelCount: 4,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Encarmine blade",
+          attacks: 5, bs: 3, strength: 9, ap: -3, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Power fist",
+          attacks: 6, bs: 2, strength: 11, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Sanguinary guard with captain with jump pack (6, melee, liberator)": new Attacker({
+    name: "Sanguinary guard captain with jump pack (6, melee, liberator)",
+    modelCount: 7,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Encarmine blade",
+          attacks: 5, bs: 3, strength: 9, ap: -3, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Power fist",
+          attacks: 6, bs: 2, strength: 11, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+
+  "Sanguinary guard (3, melee)": new Attacker({
+    name: "Sanguinary guard (3, melee)",
+    modelCount: 3,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Encarmine blade",
+          attacks: 4, bs: 3, strength: 6, ap: -3, damage: 2
+        })
+      })
+    ],
+  }),
+  "Sanguinary guard with Dante (3, melee)": new Attacker({
+    name: "Sanguinary guard with Dante (3, melee)",
+    modelCount: 4,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Encarmine blade",
+          attacks: 4, bs: 2, strength: 6, ap: -3, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "The Axe Mortalis",
+          attacks: 8, bs: 2, strength: 8, ap: -3, damage: 2, lethal: true
+        })
+      })
+    ],
+  }),
+  "Sanguinary guard with Dante (3, melee, liberator)": new Attacker({
+    name: "Sanguinary guard with Dante (3, melee, liberator)",
+    modelCount: 4,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Encarmine blade",
+          attacks: 5, bs: 2, strength: 8, ap: -3, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "The Axe Mortalis",
+          attacks: 9, bs: 2, strength: 10, ap: -3, damage: 2, lethal: true
+        })
+      })
+    ],
+  }),
+  "Sanguinary guard with Dante (6, melee)": new Attacker({
+    name: "Sanguinary guard with Dante (6, melee)",
+    modelCount: 7,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Encarmine blade",
+          attacks: 4, bs: 2, strength: 6, ap: -3, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "The Axe Mortalis",
+          attacks: 8, bs: 2, strength: 8, ap: -3, damage: 2, lethal: true
+        })
+      })
+    ],
+  }),
+  "Sanguinary guard with Dante (6, melee, liberator)": new Attacker({
+    name: "Sanguinary guard with Dante (6, melee, liberator)",
+    modelCount: 7,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Encarmine blade",
+          attacks: 5, bs: 2, strength: 8, ap: -3, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "The Axe Mortalis",
+          attacks: 9, bs: 2, strength: 10, ap: -3, damage: 2, lethal: true
         })
       })
     ],
@@ -827,6 +959,1463 @@ const bloodAngelOther = {
       })
     ],
   }),
+  // BladeGuard variants
+  "Bladeguard squad with Chaplain (6, melee)": new Attacker({
+    name: "Bladeguard squad with Chaplain (6, melee)",
+    modelCount: 6,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Master-crafted power weapon",
+          attacks: 4, bs: 3, strength: 5, ap: -2, damage: 2, plusOneToWound: true,
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Crozius arcanum",
+          attacks: 5, bs: 2, strength: 6, ap: -1, damage: 2, plusOneToWound: true,
+        })
+      })
+    ],
+  }),
+  "Bladeguard squad with Chaplain (6, melee, liberator)": new Attacker({
+    name: "Bladeguard squad with Chaplain (6, melee, liberator)",
+    modelCount: 6,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Master-crafted power weapon",
+          attacks: 5, bs: 3, strength: 7, ap: -2, damage: 2, plusOneToWound: true,
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Crozius arcanum",
+          attacks: 6, bs: 2, strength: 8, ap: -1, damage: 2, plusOneToWound: true,
+        })
+      })
+    ],
+  }),
+  "Bladeguard squad with Chaplain (3, melee, liberator)": new Attacker({
+    name: "Bladeguard squad with Chaplain (3, melee, liberator)",
+    modelCount: 6,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Master-crafted power weapon",
+          attacks: 5, bs: 3, strength: 7, ap: -2, damage: 2, plusOneToWound: true,
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Crozius arcanum",
+          attacks: 6, bs: 2, strength: 8, ap: -1, damage: 2, plusOneToWound: true,
+        })
+      })
+    ],
+  }),
+
+  "Bladeguard squad with Judiciar (6, melee)": new Attacker({
+    name: "Bladeguard squad with Judiciar (6, melee)",
+    modelCount: 6,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Master-crafted power weapon",
+          attacks: 4, bs: 3, strength: 5, ap: -2, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Executioner relic blade",
+          attacks: 5, bs: 2, strength: 7, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Bladeguard squad with Judiciar (6, melee, liberator)": new Attacker({
+    name: "Bladeguard squad with Judiciar (6, melee, liberator)",
+    modelCount: 6,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Master-crafted power weapon",
+          attacks: 5, bs: 3, strength: 7, ap: -2, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Executioner relic blade",
+          attacks: 6, bs: 2, strength: 9, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Bladeguard squad with Judiciar (3, melee, liberator)": new Attacker({
+    name: "Bladeguard squad with Judiciar (3, melee, liberator)",
+    modelCount: 6,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Master-crafted power weapon",
+          attacks: 5, bs: 3, strength: 7, ap: -2, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Executioner relic blade",
+          attacks: 6, bs: 2, strength: 9, ap: -2, damage: 2
+        })
+      })
+    ],
+  }),
+  "Bladeguard squad with Lieutenant (3, melee, liberator)": new Attacker({
+    name: "Bladeguard squad with Lieutenant (3, melee, liberator)",
+    modelCount: 6,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Master-crafted power weapon",
+          attacks: 5, bs: 3, strength: 7, ap: -2, damage: 2, lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Executioner relic blade",
+          attacks: 5, bs: 2, strength: 10, ap: -2, damage: 2, lethal: true
+        })
+      })
+    ],
+  }),
+  "Bladeguard squad with Lieutenant (6, melee, liberator)": new Attacker({
+    name: "Bladeguard squad with Lieutenant (6, melee, liberator)",
+    modelCount: 6,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Master-crafted power weapon",
+          attacks: 5, bs: 3, strength: 7, ap: -2, damage: 2, lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Executioner relic blade",
+          attacks: 5, bs: 2, strength: 10, ap: -2, damage: 2, lethal: true
+        })
+      })
+    ],
+  }),
+  "Assault Intercessor Squad with chaplain (6, melee, liberator)": new Attacker({
+    name: "Assault Intercessor Squad with chaplain (6, melee, liberator)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, rerollWound: '1s', plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 4,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1, rerollWound: '1s', plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Crozius arcanum",
+          attacks: 6, bs: 2, strength: 8, ap: -1, damage: 2, plusOneToWound: true,
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with lieutenant (6, melee, liberator)": new Attacker({
+    name: "Assault Intercessor Squad with lieutenant (6, melee, liberator)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, rerollWound: '1s', lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 4,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1, rerollWound: '1s', lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 5, bs: 2, strength: 10, ap: -2, damage: 2, lethal: true,
+        })
+      })
+    ]
+  }),
+  // Baal pred
+  "Baal predator (1, ranged, flamer)": new Attacker({
+    name: "Baal predator (1, ranged, flamer)",
+    modelCount: 1,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Baal flamestorm cannon",
+          attacks: 7, bs: 1, strength: 6, ap: -2, damage: 2, ignoreCover: true, torrent: true, 
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Hunter-killer missile",
+          attacks: 1, bs: 2, strength: 14, ap: -3, damage: 4
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Storm bolter",
+          attacks: 2, bs: 3, strength: 4, ap: 0, damage: 1, rapidFireX: 2,
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Heavy flamer",
+          attacks: 4, bs: 1, strength: 5, ap: -1, damage: 1, ignoreCover: true, torrent: true, 
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with jump pack (10, melee)": new Attacker({
+    name: "Assault Intercessor Squad with jump pack (10, melee)",
+    modelCount: 10,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2,
+        })
+      }),
+      new WeaponMount({
+        count: 9,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1,
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with jump pack (5, melee)": new Attacker({
+    name: "Assault Intercessor Squad with jump pack (5, melee)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2,
+        })
+      }),
+      new WeaponMount({
+        count: 4,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1,
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with jump pack (10, melee, liberator)": new Attacker({
+    name: "Assault Intercessor Squad with jump pack (10, melee, liberator)",
+    modelCount: 10,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2,
+        })
+      }),
+      new WeaponMount({
+        count: 9,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1,
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with jump pack (5, melee, liberator)": new Attacker({
+    name: "Assault Intercessor Squad with jump pack (5, melee, liberator)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2,
+        })
+      }),
+      new WeaponMount({
+        count: 4,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1,
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with jump pack with captain with jump pack (10, melee)": new Attacker({
+    name: "Assault Intercessor Squad with jump pack with captain with jump pack (10, melee)",
+    modelCount: 10,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2,
+        })
+      }),
+      new WeaponMount({
+        count: 9,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1,
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Power fist",
+          attacks: 5, bs: 2, strength: 8, ap: -2, damage: 2
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with jump pack with captain with jump pack (5, melee)": new Attacker({
+    name: "Assault Intercessor Squad with jump pack with captain with jump pack (5, melee)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2,
+        })
+      }),
+      new WeaponMount({
+        count: 4,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1,
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Power fist",
+          attacks: 5, bs: 2, strength: 8, ap: -2, damage: 2
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with jump pack with captain with jump pack (10, melee, liberator)": new Attacker({
+    name: "Assault Intercessor Squad with jump pack with captain with jump pack (10, melee, liberator)",
+    modelCount: 10,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 11, ap: -2, damage: 2,
+        })
+      }),
+      new WeaponMount({
+        count: 9,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 7, ap: -1, damage: 1,
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Power fist",
+          attacks: 6, bs: 2, strength: 11, ap: -2, damage: 2
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with jump pack with captain with jump pack (5, melee, liberator)": new Attacker({
+    name: "Assault Intercessor Squad with jump pack with captain with jump pack (5, melee, liberator)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 11, ap: -2, damage: 2,
+        })
+      }),
+      new WeaponMount({
+        count: 4,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 7, ap: -1, damage: 1,
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Power fist",
+          attacks: 6, bs: 2, strength: 11, ap: -2, damage: 2
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with jump pack with chaplain with jump pack (10, melee)": new Attacker({
+    name: "Assault Intercessor Squad with jump pack with chaplain with jump pack (10, melee)",
+    modelCount: 10,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 9,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1, plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Power fist",
+          attacks: 4, bs: 2, strength: 8, ap: -2, damage: 2, plusOneToWound: true
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with jump pack with chaplain with jump pack (5, melee)": new Attacker({
+    name: "Assault Intercessor Squad with jump pack with chaplain with jump pack (5, melee)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 4,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1, plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Power fist",
+          attacks: 4, bs: 2, strength: 8, ap: -2, damage: 2, plusOneToWound: true
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with jump pack with chaplain with jump pack (10, melee, liberator)": new Attacker({
+    name: "Assault Intercessor Squad with jump pack with chaplain with jump pack (10, melee, liberator)",
+    modelCount: 10,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 9,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1, plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Power fist",
+          attacks: 5, bs: 2, strength: 10, ap: -2, damage: 2, plusOneToWound: true
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with jump pack with chaplain with jump pack (5, melee, liberator)": new Attacker({
+    name: "Assault Intercessor Squad with jump pack with chaplain with jump pack (5, melee, liberator)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 4,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1, plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Power fist",
+          attacks: 6, bs: 2, strength: 10, ap: -2, damage: 2, plusOneToWound: true
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with jump pack with commander dante (10, melee)": new Attacker({
+    name: "Assault Intercessor Squad with jump pack with commander dante (10, melee)",
+    modelCount: 10,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 2, strength: 8, ap: -2, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 9,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 2, strength: 4, ap: -1, damage: 1
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "The Axe Mortalis",
+          attacks: 8, bs: 2, strength: 8, ap: -3, damage: 2, lethal: true
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with jump pack with commander dante (5, melee)": new Attacker({
+    name: "Assault Intercessor Squad with jump pack with commander dante (5, melee)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 2, strength: 8, ap: -2, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 4,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 2, strength: 4, ap: -1, damage: 1
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "The Axe Mortalis",
+          attacks: 8, bs: 2, strength: 8, ap: -3, damage: 2, lethal: true
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with jump pack with commander dante (10, melee, liberator)": new Attacker({
+    name: "Assault Intercessor Squad with jump pack with commander dante (10, melee, liberator)",
+    modelCount: 10,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 2, strength: 10, ap: -2, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 9,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 2, strength: 6, ap: -1, damage: 1
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "The Axe Mortalis",
+          attacks: 9, bs: 2, strength: 10, ap: -3, damage: 2, lethal: true
+        })
+      })
+    ]
+  }),
+  "Assault Intercessor Squad with jump pack with commander dante (5, melee, liberator)": new Attacker({
+    name: "Assault Intercessor Squad with jump pack with commander dante (5, melee, liberator)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 2, strength: 10, ap: -2, damage: 2
+        })
+      }),
+      new WeaponMount({
+        count: 4,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 2, strength: 6, ap: -1, damage: 1
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "The Axe Mortalis",
+          attacks: 9, bs: 2, strength: 10, ap: -3, damage: 2, lethal: true
+        })
+      })
+    ]
+  }),
+  //Outrider 
+  "Outrider squad (6, melee)": new Attacker({
+    name: "Outrider squad (6, melee)",
+    modelCount: 6,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1
+        })
+      }),
+    ]
+  }),
+  "Outrider squad (3, melee)": new Attacker({
+    name: "Outrider squad (3, melee)",
+    modelCount: 3,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1
+        })
+      }),
+    ]
+  }),
+  "Outrider squad (6, melee, liberator)": new Attacker({
+    name: "Outrider squad (6, melee, liberator)",
+    modelCount: 6,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 7, ap: -1, damage: 2
+        })
+      }),
+    ]
+  }),
+  "Outrider squad (3, melee, liberator)": new Attacker({
+    name: "Outrider squad (3, melee, liberator)",
+    modelCount: 3,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 7, ap: -1, damage: 2
+        })
+      }),
+    ]
+  }),
+  "Outrider squad with chaplain on bike (6, melee)": new Attacker({
+    name: "Outrider squad with chaplain on bike (6, melee)",
+    modelCount: 6,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1, plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Crozius arcanum",
+          attacks: 5, bs: 2, strength: 6, ap: -1, damage: 2, plusOneToWound: true
+        })
+      }),
+    ]
+  }),
+  "Outrider squad with chaplain on bike (3, melee)": new Attacker({
+    name: "Outrider squad with chaplain on bike (3, melee)",
+    modelCount: 3,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1, plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Crozius arcanum",
+          attacks: 5, bs: 2, strength: 6, ap: -1, damage: 2, plusOneToWound: true
+        })
+      }),
+    ]
+  }),
+  "Outrider squad with chaplain on bike (6, melee, liberator)": new Attacker({
+    name: "Outrider squad with chaplain on bike (6, melee, liberator)",
+    modelCount: 6,
+    rangedMounts: [
+      new WeaponMount({
+        count: 6,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 7, ap: -1, damage: 2, plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Crozius arcanum",
+          attacks: 6, bs: 2, strength: 9, ap: -1, damage: 3, plusOneToWound: true
+        })
+      }),
+    ]
+  }),
+  "Outrider squad with chaplain on bike (3, melee, liberator)": new Attacker({
+    name: "Outrider squad with chaplain on bike (3, melee, liberator)",
+    modelCount: 3,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 7, ap: -1, damage: 2, plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Crozius arcanum",
+          attacks: 6, bs: 2, strength: 9, ap: -1, damage: 3, plusOneToWound: true
+        })
+      }),
+    ]
+  }),
+  //DEATH COMPANY SQUAD WITH JUMP PACK
+  "Death company marines with jump packs (10, melee)": new Attacker({
+    name: "Death company marines with jump packs (10, melee)",
+    modelCount: 11,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Eviscerator",
+          attacks: 3, bs: 4, strength: 7, ap: -2, damage: 2, sustained: 1, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1, rerollHit: 'all'
+        })
+      }),
+    ],
+  }),
+  "Death company marines with jump packs (5, melee)": new Attacker({
+    name: "Death company marines with jump packs (5, melee)",
+    modelCount: 11,
+    rangedMounts: [
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Eviscerator",
+          attacks: 3, bs: 4, strength: 7, ap: -2, damage: 2, sustained: 1, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1, rerollHit: 'all'
+        })
+      }),
+    ],
+  }),
+  "Death company marines with jump packs (10, melee, liberator)": new Attacker({
+    name: "Death company marines with jump packs (10, melee, liberator)",
+    modelCount: 11,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Eviscerator",
+          attacks: 4, bs: 4, strength: 9, ap: -2, damage: 2, sustained: 1, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1, rerollHit: 'all'
+        })
+      })
+    ],
+  }),
+  "Death company marines with jump packs (5, melee, liberator)": new Attacker({
+    name: "Death company marines with jump packs (5, melee, liberator)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Eviscerator",
+          attacks: 4, bs: 4, strength: 9, ap: -2, damage: 2, sustained: 1, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1, rerollHit: 'all'
+        })
+      })
+    ],
+  }),
+  "Death company marines with jump packs with chaplain with jump pack (10, melee)": new Attacker({
+    name: "Death company marines with jump packs with chaplain with jump pack (10, melee)",
+    modelCount: 11,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, rerollHit: 'all', plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Eviscerator",
+          attacks: 3, bs: 4, strength: 7, ap: -2, damage: 2, sustained: 1, rerollHit: 'all', plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1, rerollHit: 'all', plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 1  ,
+        weapon: new Weapon({
+          name: "Power fist 1",
+          attacks: 4, bs: 2, strength: 8, ap: -2, damage: 2, rerollHit: 'all', plusOneToWound: true
+        })
+      }),
+    ],
+  }),
+  "Death company marines with jump packs with chaplain with jump pack (5, melee)": new Attacker({
+    name: "Death company marines with jump packs with chaplain with jump pack (5, melee)",
+    modelCount: 11,
+    rangedMounts: [
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, rerollHit: 'all', plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Eviscerator",
+          attacks: 3, bs: 4, strength: 7, ap: -2, damage: 2, sustained: 1, rerollHit: 'all', plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1, rerollHit: 'all', plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 1  ,
+        weapon: new Weapon({
+          name: "Power fist",
+          attacks: 4, bs: 2, strength: 8, ap: -2, damage: 2, rerollHit: 'all', plusOneToWound: true
+        })
+      }),
+    ],
+  }),
+  "Death company marines with jump packs with chaplain with jump pack (10, melee, liberator)": new Attacker({
+    name: "Death company marines with jump packs with chaplain with jump pack (10, melee, liberator)",
+    modelCount: 11,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, rerollHit: 'all', plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Eviscerator",
+          attacks: 4, bs: 4, strength: 9, ap: -2, damage: 2, sustained: 1, rerollHit: 'all', plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1, rerollHit: 'all', plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 1  ,
+        weapon: new Weapon({
+          name: "Power fist",
+          attacks: 5, bs: 2, strength: 10, ap: -2, damage: 2, rerollHit: 'all', plusOneToWound: true
+        })
+      }),
+    ],
+  }),
+  "Death company marines with jump packs with chaplain with jump pack (5, melee, liberator)": new Attacker({
+    name: "Death company marines with jump packs with chaplain with jump pack (5, melee, liberator)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, rerollHit: 'all', plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Eviscerator",
+          attacks: 4, bs: 4, strength: 9, ap: -2, damage: 2, sustained: 1, rerollHit: 'all', plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1, rerollHit: 'all', plusOneToWound: true
+        })
+      }),
+      new WeaponMount({
+        count: 1  ,
+        weapon: new Weapon({
+          name: "Power fist",
+          attacks: 5, bs: 2, strength: 10, ap: -2, damage: 2, rerollHit: 'all', plusOneToWound: true
+        })
+      }),
+    ],
+  }),
+  "Death company marines with jump packs with astorath (10, melee)": new Attacker({
+    name: "Death company marines with jump packs with astorath (10, melee)",
+    modelCount: 11,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Eviscerator",
+          attacks: 3, bs: 4, strength: 7, ap: -2, damage: 2, sustained: 1, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 1  ,
+        weapon: new Weapon({
+          name: "The Executioner’s Axe",
+          attacks: 6, bs: 2, strength: 7, ap: -3, damage: 2, rerollHit: 'all', devastating: true
+        })
+      }),
+    ],
+  }),
+  "Death company marines with jump packs with astorath (5, melee)": new Attacker({
+    name: "Death company marines with jump packs with astorath (5, melee)",
+    modelCount: 11,
+    rangedMounts: [
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Eviscerator",
+          attacks: 3, bs: 4, strength: 7, ap: -2, damage: 2, sustained: 1, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 1  ,
+        weapon: new Weapon({
+          name: "The Executioner’s Axe",
+          attacks: 6, bs: 2, strength: 7, ap: -3, damage: 2, rerollHit: 'all', devastating: true
+        })
+      }),
+    ],
+  }),
+  "Death company marines with jump packs with astorath (10, melee, liberator)": new Attacker({
+    name: "Death company marines with jump packs with astorath (10, melee, liberator)",
+    modelCount: 11,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, rerollHit: 'all', devastating: true
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Eviscerator",
+          attacks: 4, bs: 4, strength: 9, ap: -2, damage: 2, sustained: 1, rerollHit: 'all', devastating: true
+        })
+      }),
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1, rerollHit: 'all', devastating: true
+        })
+      }),
+      new WeaponMount({
+        count: 1  ,
+        weapon: new Weapon({
+          name: "The Executioner’s Axe",
+          attacks: 7, bs: 2, strength: 9, ap: -3, damage: 2, rerollHit: 'all', devastating: true
+        })
+      }),
+    ],
+  }),
+  "Death company marines with jump packs with astorath (5, melee, liberator)": new Attacker({
+    name: "Death company marines with jump packs with astorath (5, melee, liberator)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, rerollHit: 'all', devastating: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Eviscerator",
+          attacks: 4, bs: 4, strength: 9, ap: -2, damage: 2, sustained: 1, rerollHit: 'all', devastating: true
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1, rerollHit: 'all', devastating: true
+        })
+      }),
+      new WeaponMount({
+        count: 1  ,
+        weapon: new Weapon({
+          name: "The Executioner’s Axe",
+          attacks: 7, bs: 2, strength: 9, ap: -3, damage: 2, rerollHit: 'all', devastating: true
+        })
+      }),
+    ],
+  }),
+  "Death company marines with jump packs with death company captain with jump pack (10, melee)": new Attacker({
+    name: "Death company marines with jump packs with death company captain with jump pack (10, melee)",
+    modelCount: 11,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, rerollHit: 'all', sustained: 1
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Eviscerator",
+          attacks: 3, bs: 4, strength: 7, ap: -2, damage: 2, sustained: 1, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1, rerollHit: 'all', sustained: 1
+        })
+      }),
+      new WeaponMount({
+        count: 1  ,
+        weapon: new Weapon({
+          name: "Power fist",
+          attacks: 5, bs: 2, strength: 8, ap: -3, damage: 2, rerollHit: 'all', sustained: 1
+        })
+      }),
+    ],
+  }),
+  "Death company marines with jump packs with death company captain with jump pack (5, melee)": new Attacker({
+    name: "Death company marines with jump packs with death company captain with jump pack (5, melee)",
+    modelCount: 11,
+    rangedMounts: [
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Eviscerator",
+          attacks: 3, bs: 4, strength: 7, ap: -2, damage: 2, sustained: 1, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 1  ,
+        weapon: new Weapon({
+          name: "Power fist",
+          attacks: 5, bs: 2, strength: 8, ap: -3, damage: 2, rerollHit: 'all', sustained: 1
+        })
+      }),
+    ],
+  }),
+  "Death company marines with jump packs with death company captain with jump pack (10, melee, liberator)": new Attacker({
+    name: "Death company marines with jump packs with death company captain with jump pack (10, melee, liberator)",
+    modelCount: 11,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, rerollHit: 'all', sustained: 1
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Eviscerator",
+          attacks: 4, bs: 4, strength: 9, ap: -2, damage: 2, sustained: 1, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1, rerollHit: 'all', sustained: 1
+        })
+      }),
+      new WeaponMount({
+        count: 1  ,
+        weapon: new Weapon({
+          name: "Power fist",
+          attacks: 6, bs: 2, strength: 10, ap: -3, damage: 2, rerollHit: 'all', sustained: 1
+        })
+      }),
+    ],
+  }),
+  "Death company marines with jump packs with death company captain with jump pack (5, melee, liberator)": new Attacker({
+    name: "Death company marines with jump packs with death company captain with jump pack (5, melee, liberator)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, rerollHit: 'all', sustained: 1
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Eviscerator",
+          attacks: 4, bs: 4, strength: 9, ap: -2, damage: 2, sustained: 1, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1, rerollHit: 'all', sustained: 1
+        })
+      }),
+      new WeaponMount({
+        count: 1  ,
+        weapon: new Weapon({
+          name: "Power fist",
+          attacks: 6, bs: 2, strength: 10, ap: -3, damage: 2, rerollHit: 'all', sustained: 1
+        })
+      }),
+    ],
+  }),
+  "Death company marines with jump packs with lemartes (10, melee)": new Attacker({
+    name: "Death company marines with jump packs with lemartes (10, melee)",
+    modelCount: 11,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, rerollHit: 'all', lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Eviscerator",
+          attacks: 3, bs: 4, strength: 7, ap: -2, damage: 2, sustained: 1, rerollHit: 'all'
+        })
+      }),
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1, rerollHit: 'all', lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 1  ,
+        weapon: new Weapon({
+          name: "The Blood Crozius",
+          attacks: 5, bs: 2, strength: 6, ap: -2, damage: 2, rerollHit: 'all', lethal: true
+        })
+      }),
+    ],
+  }),
+  "Death company marines with jump packs with lemartes (5, melee)": new Attacker({
+    name: "Death company marines with jump packs with lemartes (5, melee)",
+    modelCount: 11,
+    rangedMounts: [
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 3, bs: 3, strength: 8, ap: -2, damage: 2, rerollHit: 'all', lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Eviscerator",
+          attacks: 3, bs: 4, strength: 7, ap: -2, damage: 2, sustained: 1, rerollHit: 'all', lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 4, bs: 3, strength: 4, ap: -1, damage: 1, rerollHit: 'all', lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 1  ,
+        weapon: new Weapon({
+          name: "The Blood Crozius",
+          attacks: 5, bs: 2, strength: 6, ap: -2, damage: 2, rerollHit: 'all', lethal: true
+        })
+      }),
+    ],
+  }),
+  "Death company marines with jump packs with lemartes (10, melee, liberator)": new Attacker({
+    name: "Death company marines with jump packs with lemartes (10, melee, liberator)",
+    modelCount: 11,
+    rangedMounts: [
+      new WeaponMount({
+        count: 3,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, rerollHit: 'all', lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Eviscerator",
+          attacks: 4, bs: 4, strength: 9, ap: -2, damage: 2, sustained: 1, rerollHit: 'all', lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 5,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1, rerollHit: 'all', lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 1  ,
+        weapon: new Weapon({
+          name: "The Blood Crozius",
+          attacks: 6, bs: 2, strength: 8, ap: -2, damage: 2, rerollHit: 'all', lethal: true
+        })
+      }),
+    ],
+  }),
+  "Death company marines with jump packs with lemartes (5, melee, liberator)": new Attacker({
+    name: "Death company marines with jump packs with lemartes (5, melee, liberator)",
+    modelCount: 5,
+    rangedMounts: [
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Powerfist",
+          attacks: 4, bs: 3, strength: 10, ap: -2, damage: 2, rerollHit: 'all', lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 1,
+        weapon: new Weapon({
+          name: "Eviscerator",
+          attacks: 4, bs: 4, strength: 9, ap: -2, damage: 2, sustained: 1, rerollHit: 'all', lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 2,
+        weapon: new Weapon({
+          name: "Astartes chainsword",
+          attacks: 5, bs: 3, strength: 6, ap: -1, damage: 1, rerollHit: 'all', lethal: true
+        })
+      }),
+      new WeaponMount({
+        count: 1  ,
+        weapon: new Weapon({
+          name: "The Blood Crozius",
+          attacks: 6, bs: 2, strength: 8, ap: -2, damage: 2, rerollHit: 'all', lethal: true
+        })
+      }),
+    ],
+  }),
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 };
 
